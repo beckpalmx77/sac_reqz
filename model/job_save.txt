@@ -1,0 +1,2 @@
+1 | IT-2022-0001 | UPDATE djob_request SET device_group_id=:device_group_id,device_desc=:device_desc,machine_no=:machine_no,job_problem_detail=:job_problem_detail        
+            WHERE id = :id
