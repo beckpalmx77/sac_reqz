@@ -32,7 +32,7 @@ if ($query->rowCount() == 1) {
             $_SESSION['email'] = $result->email;
             $_SESSION['account_type'] = $result->account_type;
             $_SESSION['user_picture'] = $result->picture;
-            $_SESSION['department'] = $result->department;
+            $_SESSION['department_id'] = $result->department_id;
             $_SESSION['lang'] = $result->lang;
             $_SESSION['permission_price'] = $result->permission_price;
             //$_SESSION['dashboard_page'] = $result->dashboard_page . ".php";

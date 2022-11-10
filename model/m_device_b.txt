@@ -1,2 +1,0 @@
-D004 | เครื่องสำรองไฟ | Y | 4 | UPDATE mdevice_group SET device_group_id=:device_group_id,device_group_desc=:device_group_desc,status=:status            
-            WHERE id = :id

@@ -13,19 +13,29 @@ if ($_POST["action"] === 'GET_DATA') {
 
     $return_arr = array();
 
-    $sql_get = "SELECT * FROM ims_user WHERE id = " . $id;
+    $sql_get = "SELECT im.*,dm.department_desc FROM ims_user im
+    left join mdepartment dm on dm.department_id = im.department_id 
+    WHERE im.id = " . $id ;
+
+    //$myfile = fopen("macc-param.txt", "w") or die("Unable to open file!");
+    //fwrite($myfile,  $sql_get);
+    //fclose($myfile);
+
     $statement = $conn->query($sql_get);
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
     foreach ($results as $result) {
-
         $return_arr[] = array("id" => $result['id'],
             "email" => $result['email'],
+            "user_id" => $result['user_id'],
             "first_name" => $result['first_name'],
             "last_name" => $result['last_name'],
+            "department_id" => $result['department_id'],
+            "department_desc" => $result['department_desc'],
             "account_type" => $result['account_type'],
             "status" => $result['status']);
     }
+
+
 
     echo json_encode($return_arr);
 
@@ -33,28 +43,28 @@ if ($_POST["action"] === 'GET_DATA') {
 
 if ($_POST["action"] === 'ADD') {
 
-    if ($_POST["email"] !== '') {
+    if ($_POST["user_id"] !== '') {
 
         $email = $_POST["email"];
-        $user_id = $_POST["email"];
+        $user_id = $_POST["user_id"];
         //$password = password_hash($password, PASSWORD_DEFAULT);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $first_name = $_POST["first_name"];
         $last_name = $_POST["last_name"];
         $account_type = $_POST["account_type"];
-
+        $department_id = $_POST["department_id"];
         $picture = $account_type == 'admin' ? "img/icon/admin-001.png" : "img/icon/user-001.png";
 
         $status = "Active";
 
-        $sql_find = "SELECT * FROM ims_user WHERE email = '" . $email . "'";
+        $sql_find = "SELECT * FROM ims_user WHERE user_id = '" . $user_id . "'";
 
         $nRows = $conn->query($sql_find)->fetchColumn();
         if ($nRows > 0) {
             echo 2;
         } else {
-            $sql = "INSERT INTO ims_user(user_id,email,password,first_name,last_name,account_type,picture,status)
-            VALUES (:user_id,:email,:password,:first_name,:last_name,:account_type,:picture,:status)";
+            $sql = "INSERT INTO ims_user(user_id,email,password,first_name,last_name,account_type,picture,department_id,status)
+            VALUES (:user_id,:email,:password,:first_name,:last_name,:account_type,:picture,:department_id,:status)";
             $query = $conn->prepare($sql);
             $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
             $query->bindParam(':email', $email, PDO::PARAM_STR);
@@ -63,6 +73,7 @@ if ($_POST["action"] === 'ADD') {
             $query->bindParam(':last_name', $last_name, PDO::PARAM_STR);
             $query->bindParam(':account_type', $account_type, PDO::PARAM_STR);
             $query->bindParam(':picture', $picture, PDO::PARAM_STR);
+            $query->bindParam(':department_id', $department_id, PDO::PARAM_STR);
             $query->bindParam(':status', $status, PDO::PARAM_STR);
             $query->execute();
 
@@ -80,27 +91,33 @@ if ($_POST["action"] === 'ADD') {
 
 if ($_POST["action"] === 'UPDATE') {
 
-    if ($_POST["email"] != '') {
+    if ($_POST["user_id"] != '') {
 
         $id = $_POST["id"];
+        $user_id = $_POST["user_id"];
         $email = $_POST["email"];
         $first_name = $_POST["first_name"];
         $last_name = $_POST["last_name"];
         $status = $_POST["status"];
         $account_type = $_POST["account_type"];
+        $department_id = $_POST["department_id"];
         $picture = $account_type === 'admin' ? "img/icon/admin-001.png" : "img/icon/user-001.png";
-        $sql_find = "SELECT * FROM ims_user WHERE email = '" . $email . "'";
+        $sql_find = "SELECT * FROM ims_user WHERE id = '" . $id . "'";
+
         $nRows = $conn->query($sql_find)->fetchColumn();
         if ($nRows > 0) {
             $sql_update = "UPDATE ims_user SET first_name=:first_name,last_name=:last_name,status=:status,account_type=:account_type
-            ,picture=:picture
+            ,picture=:picture,department_id=:department_id,email=:email
             WHERE id = :id";
+
             $query = $conn->prepare($sql_update);
             $query->bindParam(':first_name', $first_name, PDO::PARAM_STR);
             $query->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $query->bindParam(':status', $status, PDO::PARAM_STR);
             $query->bindParam(':account_type', $account_type, PDO::PARAM_STR);
             $query->bindParam(':picture', $picture, PDO::PARAM_STR);
-            $query->bindParam(':status', $status, PDO::PARAM_STR);
+            $query->bindParam(':department_id', $department_id, PDO::PARAM_STR);
+            $query->bindParam(':email', $email, PDO::PARAM_STR);
             $query->bindParam(':id', $id, PDO::PARAM_STR);
             $query->execute();
             echo $save_success;
@@ -180,12 +197,12 @@ if ($_POST["action"] === 'GET_ACCOUNT') {
 ## Search
     $searchQuery = " ";
     if ($searchValue != '') {
-        $searchQuery = " AND (email LIKE :email or 
+        $searchQuery = " AND (user_id LIKE :user_id or 
         first_name LIKE :first_name OR
         last_name LIKE :last_name OR         
         status LIKE :status ) ";
         $searchArray = array(
-            'email' => "%$searchValue%",
+            'user_id' => "%$searchValue%",
             'first_name' => "%$searchValue%",
             'last_name' => "%$searchValue%",
             'status' => "%$searchValue%"
@@ -224,7 +241,7 @@ if ($_POST["action"] === 'GET_ACCOUNT') {
 
         $data[] = array(
             "line_no" => $row['line_no'],
-            "email" => $row['email'],
+            "user_id" => $row['user_id'],
             "first_name" => $row['first_name'],
             "last_name" => $row['last_name'],
             "update" => "<button type='button' name='update' id='" . $row['id'] . "' class='btn btn-info btn-xs update' data-toggle='tooltip' title='Update'>Update</button>",

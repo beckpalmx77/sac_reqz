@@ -1,1 +1,0 @@
-D004 | เครื่องสำรองไฟ | Y | 4 | SELECT * FROM mdevice_group WHERE id = '4'

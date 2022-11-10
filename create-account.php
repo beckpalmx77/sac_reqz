@@ -47,11 +47,29 @@ if (strlen($_SESSION['alogin']) == "") {
                                                         <form id="from_data">
 
                                                             <div class="form-group has-success">
-                                                                <label for="success" class="control-label">ชื่อผู้ใช้
-                                                                    User
-                                                                    Name (Email Address)</label>
+                                                                <label for="success" class="control-label">ชื่อผู้ใช้</label>
                                                                 <div class="">
-                                                                    <input type="email" name="email"
+                                                                    <input type="text" name="user_id"
+                                                                           class="form-control"
+                                                                           required="required" id="user_id">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group has-success">
+                                                                <label for="success" class="control-label">รหัสผ่าน
+                                                                    Password</label>
+
+                                                                <div class="">
+                                                                    <input type="password" name="password"
+                                                                           class="form-control"
+                                                                           required="required" id="password">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group has-success">
+                                                                <label for="success" class="control-label">Email Address</label>
+                                                                <div class="">
+                                                                    <input type="text" name="email"
                                                                            class="form-control"
                                                                            required="required" id="email">
                                                                 </div>
@@ -77,15 +95,33 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                 </div>
                                                             </div>
 
-                                                            <div class="form-group has-success">
-                                                                <label for="success" class="control-label">รหัสผ่าน
-                                                                    Password</label>
+                                                            <input type="hidden" class="form-control"
+                                                                   id="department_id"
+                                                                   name="department_id">
 
-                                                                <div class="">
-                                                                    <input type="password" name="password"
-                                                                           class="form-control"
-                                                                           required="required" id="password">
+                                                            <div class="form-group has-success">
+                                                                <label class="control-label" for="select-testing">แผนก</label>
+                                                                <div class=”form-group”>
+                                                                    <select id="department_id" name="department_id"
+                                                                            class="form-control" data-live-search="true"
+                                                                            title="Please select">
+                                                                        <option
+                                                                                value="<?php echo htmlentities($result->department_id); ?>"
+                                                                                selected><?php echo htmlentities($result->department_desc); ?></option>
+                                                                        <?php $sql1 = "SELECT * from mdepartment";
+                                                                        $query1 = $conn->prepare($sql1);
+                                                                        $query1->execute();
+                                                                        $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
+                                                                        if ($query1->rowCount() > 0) {
+                                                                            foreach ($results1 as $result1) { ?>
+                                                                                <option
+                                                                                        value="<?php echo htmlentities($result1->department_id); ?>"><?php echo htmlentities($result1->department_desc); ?></option>
+                                                                            <?php }
+                                                                        } ?>
+                                                                    </select>
+
                                                                 </div>
+                                                                <span class="help-block"></span>
                                                             </div>
 
                                                             <div class="form-group has-success">
@@ -114,6 +150,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                 </div>
                                                                 <span class="help-block"></span>
                                                             </div>
+
+
 
                                                             <div class="form-group has-success">
 
@@ -158,6 +196,46 @@ if (strlen($_SESSION['alogin']) == "") {
 
                 <!---Container Fluid-->
 
+                <div class="modal fade" id="SearchDepartmentModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modal title</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×
+                                </button>
+                            </div>
+
+                            <div class="container"></div>
+                            <div class="modal-body">
+
+                                <div class="modal-body">
+
+                                    <table cellpadding="0" cellspacing="0" border="0"
+                                           class="display"
+                                           id="TableDepartmentList"
+                                           width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>รหัสแผนก</th>
+                                            <th>รายละเอียด</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>รหัสแผนก</th>
+                                            <th>รายละเอียด</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <?php
@@ -188,6 +266,8 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="js/myadmin.min.js"></script>
     <!-- Javascript for this page -->
 
+    <script src="js/modal/show_department_modal.js"></script>
+
     <script src="js/MyFrameWork/framework_util.js"></script>
 
     <script>
@@ -216,7 +296,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
             let action = "GET_COUNT_RECORDS_COND";
             let table_name = "ims_user";
-            let cond = " WHERE email = '" + $('#email').val() + "'";
+            let cond = " WHERE user_id = '" + $('#user_id').val() + "'";
             let formData = {action: action, table_name: table_name, cond: cond};
             $.ajax({
                 type: "POST",
@@ -224,8 +304,8 @@ if (strlen($_SESSION['alogin']) == "") {
                 data: formData,
                 success: function (response) {
                     if (response > 0) {
-                        alertify.error("มี User Email นี้ในระบบแล้วโปรดใช้ User อื่น");
-                        $('#email').val("");
+                        alertify.error("มี User นี้ในระบบแล้วโปรดใช้ User อื่น");
+                        $('#user_id').val("");
                     }
                 },
                 error: function (response) {

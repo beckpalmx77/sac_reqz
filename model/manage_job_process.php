@@ -169,7 +169,13 @@ if ($_POST["action"] === 'GET_JOB') {
     $searchArray = array();
 
 ## Search
-    $searchQuery = " ";
+    if ($_SESSION['account_type']!=='admin') {
+        $searchQuery = " AND job_department = '" . $_SESSION['department_id'] . "'";
+    } else {
+        $searchQuery = " ";
+    }
+
+
     if ($searchValue != '') {
         $searchQuery = " AND (job_id LIKE :job_id or
         job_date LIKE :job_date ) ";
@@ -195,12 +201,13 @@ if ($_POST["action"] === 'GET_JOB') {
     $stmt = $conn->prepare("SELECT * FROM djob_request WHERE 1 " . $searchQuery
         . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset");
 
-    /*
+/*
         $txt = $searchQuery . " | " . $columnName . " | " . $columnSortOrder ;
         $my_file = fopen("job_a.txt", "w") or die("Unable to open file!");
         fwrite($my_file, $txt);
         fclose($my_file);
-    */
+*/
+
 
 // Bind values
     foreach ($searchArray as $key => $search) {

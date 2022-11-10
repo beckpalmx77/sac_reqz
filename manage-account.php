@@ -25,7 +25,8 @@ if (strlen($_SESSION['alogin']) == "") {
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?php echo urldecode($_GET['s']) ?></h1>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo $_SESSION['dashboard_page']?>">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo $_SESSION['dashboard_page'] ?>">Home</a>
+                            </li>
                             <li class="breadcrumb-item"><?php echo urldecode($_GET['m']) ?></li>
                             <li class="breadcrumb-item active"
                                 aria-current="page"><?php echo urldecode($_GET['s']) ?></li>
@@ -47,7 +48,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Email</th>
+                                                    <th>USER ID</th>
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
                                                     <th>Type</th>
@@ -59,7 +60,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <tfoot>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Email</th>
+                                                    <th>USER ID</th>
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
                                                     <th>Type</th>
@@ -103,8 +104,15 @@ if (strlen($_SESSION['alogin']) == "") {
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group"
-                                    <label for="email" class="control-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="email"
+                                    <label for="user_id" class="control-label">User ID</label>
+                                    <input type="text" class="form-control" id="user_id" name="user_id" placeholder="User ID"
+                                           required>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="form-group"
+                                    <label for="user_id" class="control-label">Email</label>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email"
                                            required>
                                 </div>
 
@@ -118,6 +126,34 @@ if (strlen($_SESSION['alogin']) == "") {
                                     <input type="text" class="form-control" id="last_name" name="last_name"
                                            placeholder="Last Name" required>
                                 </div>
+
+                                <div class="form-group row">
+                                    <input type="hidden" class="form-control"
+                                           id="department_id"
+                                           name="department_id">
+                                    <div class="col-sm-10">
+                                        <label for="department_id"
+                                               class="control-label">แผนก</label>
+                                        <input type="text" class="form-control"
+                                               id="department_desc"
+                                               name="department_desc"
+                                               required="required"
+                                               readonly="true"
+                                               placeholder="แผนก">
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <label for="quantity"
+                                               class="control-label">เลือก</label>
+                                        <a data-toggle="modal"
+                                           href="#SearchDepartmentModal"
+                                           class="btn btn-primary">
+                                            Click <i class="fa fa-search"
+                                                     aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
                                 <div class=”form-group”>
                                     <label for="account_type" class="control-label">ประเภทผู้ใช้
                                         (Administrator=จัดการระบบ)</label>
@@ -165,6 +201,46 @@ if (strlen($_SESSION['alogin']) == "") {
                     </form>
                 </div>
 
+                <div class="modal fade" id="SearchDepartmentModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modal title</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×
+                                </button>
+                            </div>
+
+                            <div class="container"></div>
+                            <div class="modal-body">
+
+                                <div class="modal-body">
+
+                                    <table cellpadding="0" cellspacing="0" border="0"
+                                           class="display"
+                                           id="TableDepartmentList"
+                                           width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>รหัสแผนก</th>
+                                            <th>รายละเอียด</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>รหัสแผนก</th>
+                                            <th>รายละเอียด</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -190,6 +266,9 @@ if (strlen($_SESSION['alogin']) == "") {
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/myadmin.min.js"></script>
+
+    <script src="js/modal/show_department_modal.js"></script>
+
 
     <!-- Page level plugins -->
 
@@ -244,7 +323,7 @@ if (strlen($_SESSION['alogin']) == "") {
                 },
                 'columns': [
                     {data: 'line_no'},
-                    {data: 'email'},
+                    {data: 'user_id'},
                     {data: 'first_name'},
                     {data: 'last_name'},
                     {data: 'picture'},
@@ -291,18 +370,24 @@ if (strlen($_SESSION['alogin']) == "") {
                     let len = response.length;
                     for (let i = 0; i < len; i++) {
                         let id = response[i].id;
+                        let user_id = response[i].user_id;
                         let email = response[i].email;
                         let first_name = response[i].first_name;
                         let last_name = response[i].last_name;
                         let account_type = response[i].account_type;
+                        let department_id = response[i].department_id;
+                        let department_desc = response[i].department_desc;
                         let status = response[i].status;
 
                         $('#recordModal').modal('show');
                         $('#id').val(id);
+                        $('#user_id').val(user_id);
                         $('#email').val(email);
                         $('#first_name').val(first_name);
                         $('#last_name').val(last_name);
                         $('#account_type').val(account_type);
+                        $('#department_id').val(department_id);
+                        $('#department_desc').val(department_desc);
                         $('#status').val(status);
                         $('.modal-title').html("<i class='fa fa-plus'></i> Edit Record");
                         $('#action').val('UPDATE');
@@ -332,7 +417,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     let len = response.length;
                     for (let i = 0; i < len; i++) {
                         let id = response[i].id;
-                        let email = response[i].email;
+                        let user_id = response[i].user_id;
                         let first_name = response[i].first_name;
                         let last_name = response[i].last_name;
                         let account_type = response[i].account_type;
@@ -340,7 +425,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
                         $('#recordModal').modal('show');
                         $('#id').val(id);
-                        $('#email').val(email);
+                        $('#user_id').val(user_id);
                         $('#first_name').val(first_name);
                         $('#last_name').val(last_name);
                         $('#account_type').val(account_type);

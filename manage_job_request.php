@@ -102,7 +102,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                 <input type="hidden" class="form-control"
                                                                        id="department" name="department"
                                                                        readonly="true"
-                                                                       value="<?php echo $_SESSION['department'] ?>"
+                                                                       value="<?php echo $_SESSION['department_id'] ?>"
                                                                        placeholder="department">
 
                                                                 <div class="form-group row">
@@ -164,7 +164,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                               rows="3"></textarea>
                                                                 </div>
 
-                                                                <?php if ($_SESSION['department'] === 'IT') { ?>
+                                                                <?php if ($_SESSION['account_type'] === 'admin') { ?>
                                                                     <div class="form-group">
                                                                         <label for="job_solve_detail"
                                                                                class="control-label">การแก้ไข</label>
