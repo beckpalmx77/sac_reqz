@@ -53,7 +53,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <thead>
                                                 <tr>
                                                     <th>รหัสประเภท</th>
-                                                    <th>รานละเอียด</th>
+                                                    <th>รายละเอียด</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                     <th>Action</th>
@@ -62,7 +62,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <tfoot>
                                                 <tr>
                                                     <th>รหัสประเภท</th>
-                                                    <th>รานละเอียด</th>
+                                                    <th>รายละเอียด</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                     <th>Action</th>

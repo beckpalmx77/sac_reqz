@@ -53,7 +53,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <thead>
                                                 <tr>
                                                     <th>รหัสแผนก</th>
-                                                    <th>รานละเอียด</th>
+                                                    <th>รายละเอียด</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                     <th>Action</th>
@@ -62,7 +62,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 <tfoot>
                                                 <tr>
                                                     <th>รหัสแผนก</th>
-                                                    <th>รานละเอียด</th>
+                                                    <th>รายละเอียด</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                     <th>Action</th>
@@ -228,7 +228,7 @@ if (strlen($_SESSION['alogin']) == "") {
         $(document).ready(function () {
             let formData = {action: "GET_DEPARTMENT", sub_action: "GET_MASTER"};
             let dataRecords = $('#TableRecordList').DataTable({
-                'lengthMenu': [[10, 20, 50, 100], [10, 20, 50, 100]],
+                'lengthMenu': [[7,10, 20, 50, 100], [7,10, 20, 50, 100]],
                 'language': {
                     search: 'ค้นหา', lengthMenu: 'แสดง _MENU_ รายการ',
                     info: 'หน้าที่ _PAGE_ จาก _PAGES_',
