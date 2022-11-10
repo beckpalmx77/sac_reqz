@@ -78,7 +78,6 @@ if ($_POST["action"] === 'ADD') {
     }
 }
 
-
 if ($_POST["action"] === 'UPDATE') {
 
     if ($_POST["device_group_desc"] != '') {
