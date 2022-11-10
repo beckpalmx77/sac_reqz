@@ -13,8 +13,8 @@ if ($_POST["action"] === 'GET_DATA') {
 
     $return_arr = array();
 
-    $sql_get = "SELECT * FROM v_mdevice_group "
-    . " WHERE v_mdevice_group.id = " . $id;
+    $sql_get = "SELECT * FROM mdevice_group "
+        . " WHERE mdevice_group.id = " . $id;
 
     //$myfile = fopen("myqeury_1.txt", "w") or die("Unable to open file!");
     //fwrite($myfile, $sql_get);
@@ -25,11 +25,9 @@ if ($_POST["action"] === 'GET_DATA') {
 
     foreach ($results as $result) {
         $return_arr[] = array("id" => $result['id'],
-            "job_date_id" => $result['job_date_id'],
-            "job_id" => $result['job_id'],
-            "job_problem_detail" => $result['job_problem_detail'],
-            "job_date" => $result['job_date'],
-            "job_status" => $result['job_status']);
+            "device_group_id" => $result['device_group_id'],
+            "device_group_desc" => $result['device_group_desc'],
+            "status" => $result['status']);
     }
 
     echo json_encode($return_arr);
@@ -38,10 +36,10 @@ if ($_POST["action"] === 'GET_DATA') {
 
 if ($_POST["action"] === 'SEARCH') {
 
-    if ($_POST["job_date"] !== '') {
+    if ($_POST["device_group_id"] !== '') {
 
-        $job_date = $_POST["job_date"];
-        $sql_find = "SELECT * FROM mdevice_group WHERE job_date = '" . $job_date . "'";
+        $device_group_id = $_POST["device_group_id"];
+        $sql_find = "SELECT * FROM mdevice_group WHERE device_group_id = '" . $device_group_id . "'";
         $nRows = $conn->query($sql_find)->fetchColumn();
         if ($nRows > 0) {
             echo 2;
@@ -52,22 +50,22 @@ if ($_POST["action"] === 'SEARCH') {
 }
 
 if ($_POST["action"] === 'ADD') {
-    if ($_POST["job_date"] !== '') {
-        $job_date_id = "J-" . sprintf('%04s', LAST_ID($conn, "mdevice_group", 'id'));
-        $job_id = $_POST["job_id"];
-        $job_date = $_POST["job_date"];
-        $job_status = $_POST["job_status"];
-        $sql_find = "SELECT * FROM mdevice_group WHERE job_date = '" . $job_date . "'";
+    if ($_POST["device_group_desc"] !== '') {
+        $device_group_id = "D" . sprintf('%03s', LAST_ID($conn, "mdevice_group", 'id'));
+        $device_group_desc = $_POST["device_group_desc"];
+        $status = $_POST["status"];
+        $sql_find = "SELECT * FROM mdevice_group WHERE device_group_id = '" . $device_group_id . "'";
+
         $nRows = $conn->query($sql_find)->fetchColumn();
         if ($nRows > 0) {
             echo $dup;
         } else {
-            $sql = "INSERT INTO mdevice_group(job_id,job_date,job_status) 
-                    VALUES (:job_id,:job_date,:job_status)";
+            $sql = "INSERT INTO mdevice_group(device_group_id,device_group_desc,status) 
+                    VALUES (:device_group_id,:device_group_desc,:status)";
             $query = $conn->prepare($sql);
-            $query->bindParam(':job_id', $job_id, PDO::PARAM_STR);
-            $query->bindParam(':job_date', $job_date, PDO::PARAM_STR);
-            $query->bindParam(':job_status', $job_status, PDO::PARAM_STR);
+            $query->bindParam(':device_group_id', $device_group_id, PDO::PARAM_STR);
+            $query->bindParam(':device_group_desc', $device_group_desc, PDO::PARAM_STR);
+            $query->bindParam(':status', $status, PDO::PARAM_STR);
             $query->execute();
             $lastInsertId = $conn->lastInsertId();
 
@@ -83,21 +81,21 @@ if ($_POST["action"] === 'ADD') {
 
 if ($_POST["action"] === 'UPDATE') {
 
-    if ($_POST["job_date"] != '') {
+    if ($_POST["device_group_desc"] != '') {
 
         $id = $_POST["id"];
-        $job_date_id = $_POST["job_date_id"];
-        $job_date = $_POST["job_date"];
-        $job_status = $_POST["job_status"];
-        $sql_find = "SELECT * FROM mdevice_group WHERE job_date_id = '" . $job_date_id . "'";
+        $device_group_id = $_POST["device_group_id"];
+        $device_group_desc = $_POST["device_group_desc"];
+        $status = $_POST["status"];
+        $sql_find = "SELECT * FROM mdevice_group WHERE id = '" . $id . "'";
         $nRows = $conn->query($sql_find)->fetchColumn();
         if ($nRows > 0) {
-            $sql_update = "UPDATE mdevice_group SET job_date_id=:job_date_id,job_date=:job_date,job_status=:job_status            
+            $sql_update = "UPDATE mdevice_group SET device_group_id=:device_group_id,device_group_desc=:device_group_desc,status=:status            
             WHERE id = :id";
             $query = $conn->prepare($sql_update);
-            $query->bindParam(':job_date_id', $job_date_id, PDO::PARAM_STR);
-            $query->bindParam(':job_date', $job_date, PDO::PARAM_STR);
-            $query->bindParam(':job_status', $job_status, PDO::PARAM_STR);
+            $query->bindParam(':device_group_id', $device_group_id, PDO::PARAM_STR);
+            $query->bindParam(':device_group_desc', $device_group_desc, PDO::PARAM_STR);
+            $query->bindParam(':status', $status, PDO::PARAM_STR);
             $query->bindParam(':id', $id, PDO::PARAM_STR);
             $query->execute();
             echo $save_success;
@@ -164,12 +162,12 @@ if ($_POST["action"] === 'GET_DEVICE') {
     $stmt = $conn->prepare("SELECT * FROM mdevice_group WHERE 1 " . $searchQuery
         . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset");
 
-/*
-    $txt = $searchQuery . " | " . $columnName . " | " . $columnSortOrder ;
-    $my_file = fopen("device_a.txt", "w") or die("Unable to open file!");
-    fwrite($my_file, $txt);
-    fclose($my_file);
-*/
+    /*
+        $txt = $searchQuery . " | " . $columnName . " | " . $columnSortOrder ;
+        $my_file = fopen("device_a.txt", "w") or die("Unable to open file!");
+        fwrite($my_file, $txt);
+        fclose($my_file);
+    */
 
 // Bind values
     foreach ($searchArray as $key => $search) {
@@ -187,10 +185,8 @@ if ($_POST["action"] === 'GET_DEVICE') {
         if ($_POST['sub_action'] === "GET_MASTER") {
             $data[] = array(
                 "id" => $row['id'],
-                "job_id" => $row['job_id'],
-                "job_date" => $row['job_date'],
-                "device_desc" => $row['device_desc'],
-                "job_problem_detail" => $row['job_problem_detail'],
+                "device_group_id" => $row['device_group_id'],
+                "device_group_desc" => $row['device_group_desc'],
                 "update" => "<button type='button' name='update' id='" . $row['id'] . "' class='btn btn-info btn-xs update' data-toggle='tooltip' title='Update'>Update</button>",
                 "delete" => "<button type='button' name='delete' id='" . $row['id'] . "' class='btn btn-danger btn-xs delete' data-toggle='tooltip' title='Delete'>Delete</button>",
                 "status" => $row['status'] === 'Y' ? "<div class='text-success'>" . $row['status'] . "</div>" : "<div class='text-muted'> " . $row['status'] . "</div>"

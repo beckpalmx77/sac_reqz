@@ -1,1 +1,0 @@
-SELECT * FROM djob_request  WHERE djob_request.id = 1

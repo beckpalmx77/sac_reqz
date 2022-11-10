@@ -52,8 +52,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                             <table id='TableRecordList' class='display dataTable'>
                                                 <thead>
                                                 <tr>
-                                                    <th>รหัสคำถาม</th>
-                                                    <th>คำถาม</th>
+                                                    <th>รหัสประเภท</th>
+                                                    <th>รานละเอียด</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                     <th>Action</th>
@@ -61,8 +61,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
-                                                    <th>รหัสคำถาม</th>
-                                                    <th>คำถาม</th>
+                                                    <th>รหัสประเภท</th>
+                                                    <th>รานละเอียด</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                     <th>Action</th>
@@ -88,21 +88,21 @@ if (strlen($_SESSION['alogin']) == "") {
                                                             <div class="modal-body">
 
                                                                 <div class="form-group">
-                                                                    <label for="faq_id" class="control-label">รหัสคำถาม</label>
-                                                                    <input type="faq_id" class="form-control"
-                                                                           id="faq_id" name="faq_id"
+                                                                    <label for="device_group_id" class="control-label">รหัสประเภท</label>
+                                                                    <input type="device_group_id" class="form-control"
+                                                                           id="device_group_id" name="device_group_id"
                                                                            readonly="true"
                                                                            placeholder="สร้างอัตโนมัติ">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="name_t"
-                                                                           class="control-label">คำถาม</label>
+                                                                           class="control-label">ประเภท</label>
                                                                     <input type="text" class="form-control"
-                                                                           id="faq_desc"
-                                                                           name="faq_desc"
+                                                                           id="device_group_desc"
+                                                                           name="device_group_desc"
                                                                            required="required"
-                                                                           placeholder="คำถาม">
+                                                                           placeholder="ประเภท">
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -110,8 +110,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                     <select id="status" name="status"
                                                                             class="form-control" data-live-search="true"
                                                                             title="Please select">
-                                                                        <option>Active</option>
-                                                                        <option>Inactive</option>
+                                                                        <option>N</option>
+                                                                        <option>Y</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -135,46 +135,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                             </div>
                                         </div>
 
-
-                                        <div class="modal fade" id="SearchModal">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Modal title</h4>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                aria-hidden="true">×
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="container"></div>
-                                                    <div class="modal-body">
-
-                                                        <div class="modal-body">
-
-                                                            <table cellpadding="0" cellspacing="0" border="0"
-                                                                   class="display"
-                                                                   id="TableUnitList"
-                                                                   width="100%">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>รหัส</th>
-                                                                    <th>หน่วยนับ</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tfoot>
-                                                                <tr>
-                                                                    <th>รหัส</th>
-                                                                    <th>หน่วยนับ</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -244,14 +204,14 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <script>
 
-        $("#faq_desc").blur(function () {
+        $("#device_group_desc").blur(function () {
             let method = $('#action').val();
             if (method === "ADD") {
-                let faq_id = $('#faq_id').val();
-                let faq_desc = $('#faq_desc').val();
-                let formData = {action: "SEARCH", faq_id: faq_id, faq_desc: faq_desc};
+                let device_group_id = $('#device_group_id').val();
+                let device_group_desc = $('#device_group_desc').val();
+                let formData = {action: "SEARCH", device_group_id: device_group_id, device_group_desc: device_group_desc};
                 $.ajax({
-                    url: 'model/manage_faq_process.php',
+                    url: 'model/manage_device_process.php',
                     method: "POST",
                     data: formData,
                     success: function (data) {
@@ -267,7 +227,7 @@ if (strlen($_SESSION['alogin']) == "") {
 
     <script>
         $(document).ready(function () {
-            let formData = {action: "GET_FAQ", sub_action: "GET_MASTER"};
+            let formData = {action: "GET_DEVICE", sub_action: "GET_MASTER"};
             let dataRecords = $('#TableRecordList').DataTable({
                 'lengthMenu': [[5, 10, 20, 50, 100], [5, 10, 20, 50, 100]],
                 'language': {
@@ -286,12 +246,12 @@ if (strlen($_SESSION['alogin']) == "") {
                 'serverSide': true,
                 'serverMethod': 'post',
                 'ajax': {
-                    'url': 'model/manage_faq_process.php',
+                    'url': 'model/manage_device_process.php',
                     'data': formData
                 },
                 'columns': [
-                    {data: 'faq_id'},
-                    {data: 'faq_desc'},
+                    {data: 'device_group_id'},
+                    {data: 'device_group_desc'},
                     {data: 'status'},
                     {data: 'update'},
                     {data: 'delete'}
@@ -303,8 +263,9 @@ if (strlen($_SESSION['alogin']) == "") {
                 event.preventDefault();
                 $('#save').attr('disabled', 'disabled');
                 let formData = $(this).serialize();
+                //alert(formData);
                 $.ajax({
-                    url: 'model/manage_faq_process.php',
+                    url: 'model/manage_device_process.php',
                     method: "POST",
                     data: formData,
                     success: function (data) {
@@ -325,8 +286,8 @@ if (strlen($_SESSION['alogin']) == "") {
             $("#btnAdd").click(function () {
                 $('#recordModal').modal('show');
                 $('#id').val("");
-                $('#faq_id').val("");
-                $('#faq_desc').val("");
+                $('#device_group_id').val("");
+                $('#device_group_desc').val("");
                 $('.modal-title').html("<i class='fa fa-plus'></i> ADD Record");
                 $('#action').val('ADD');
                 $('#save').val('Save');
@@ -342,21 +303,21 @@ if (strlen($_SESSION['alogin']) == "") {
             let formData = {action: "GET_DATA", id: id};
             $.ajax({
                 type: "POST",
-                url: 'model/manage_faq_process.php',
+                url: 'model/manage_device_process.php',
                 dataType: "json",
                 data: formData,
                 success: function (response) {
                     let len = response.length;
                     for (let i = 0; i < len; i++) {
                         let id = response[i].id;
-                        let faq_id = response[i].faq_id;
-                        let faq_desc = response[i].faq_desc;
+                        let device_group_id = response[i].device_group_id;
+                        let device_group_desc = response[i].device_group_desc;
                         let status = response[i].status;
 
                         $('#recordModal').modal('show');
                         $('#id').val(id);
-                        $('#faq_id').val(faq_id);
-                        $('#faq_desc').val(faq_desc);
+                        $('#device_group_id').val(device_group_id);
+                        $('#device_group_desc').val(device_group_desc);
                         $('#status').val(status);
                         $('.modal-title').html("<i class='fa fa-plus'></i> Edit Record");
                         $('#action').val('UPDATE');
@@ -378,21 +339,21 @@ if (strlen($_SESSION['alogin']) == "") {
             let formData = {action: "GET_DATA", id: id};
             $.ajax({
                 type: "POST",
-                url: 'model/manage_faq_process.php',
+                url: 'model/manage_device_process.php',
                 dataType: "json",
                 data: formData,
                 success: function (response) {
                     let len = response.length;
                     for (let i = 0; i < len; i++) {
                         let id = response[i].id;
-                        let faq_id = response[i].faq_id;
-                        let faq_desc = response[i].faq_desc;
+                        let device_group_id = response[i].device_group_id;
+                        let device_group_desc = response[i].device_group_desc;
                         let status = response[i].status;
 
                         $('#recordModal').modal('show');
                         $('#id').val(id);
-                        $('#faq_id').val(faq_id);
-                        $('#faq_desc').val(faq_desc);
+                        $('#device_group_id').val(device_group_id);
+                        $('#device_group_desc').val(device_group_desc);
                         $('#status').val(status);
                         $('.modal-title').html("<i class='fa fa-minus'></i> Delete Record");
                         $('#action').val('DELETE');

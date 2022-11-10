@@ -15,10 +15,6 @@ if ($_POST["action"] === 'GET_DATA') {
     $sql_get = "SELECT * FROM djob_request "
         . " WHERE djob_request.id = " . $id;
 
-    $myfile = fopen("myqeury_1.txt", "w") or die("Unable to open file!");
-    fwrite($myfile, $sql_get);
-    fclose($myfile);
-
     $statement = $conn->query($sql_get);
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -34,13 +30,7 @@ if ($_POST["action"] === 'GET_DATA') {
             "job_solve_detail" => $result['job_solve_detail'],
             "status" => $result['status']);
     }
-
-    $myfile = fopen("myqeury_data.txt", "w") or die("Unable to open file!");
-    fwrite($myfile, $result['job_problem_detail']);
-    fclose($myfile);
-
     echo json_encode($return_arr);
-
 }
 
 if ($_POST["action"] === 'SEARCH') {
@@ -142,11 +132,6 @@ if ($_POST["action"] === 'UPDATE') {
                 echo $save_success;
             }
         }
-
-        $txt = $id . " | " . $job_id . " | " . $sql_update;
-        $my_file = fopen("job_save.txt", "w") or die("Unable to open file!");
-        fwrite($my_file, $txt);
-        fclose($my_file);
 
     }
 }
