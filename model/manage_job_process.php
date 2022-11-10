@@ -15,9 +15,9 @@ if ($_POST["action"] === 'GET_DATA') {
     $sql_get = "SELECT * FROM djob_request "
         . " WHERE djob_request.id = " . $id;
 
-    //$myfile = fopen("myqeury_1.txt", "w") or die("Unable to open file!");
-    //fwrite($myfile, $sql_get);
-    //fclose($myfile);
+    $myfile = fopen("myqeury_1.txt", "w") or die("Unable to open file!");
+    fwrite($myfile, $sql_get);
+    fclose($myfile);
 
     $statement = $conn->query($sql_get);
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -31,40 +31,13 @@ if ($_POST["action"] === 'GET_DATA') {
             "device_desc" => $result['device_desc'],
             "machine_no" => $result['machine_no'],
             "job_problem_detail" => $result['job_problem_detail'],
+            "job_solve_detail" => $result['job_solve_detail'],
             "status" => $result['status']);
     }
 
-    echo json_encode($return_arr);
-
-}
-
-if ($_POST["action"] === 'GET_DATA_SOLVE') {
-
-    $id = $_POST["id"];
-
-    $return_arr = array();
-
-    $sql_get = "SELECT * FROM djob_request "
-        . " WHERE djob_request.id = " . $id;
-
-    //$myfile = fopen("myqeury_1.txt", "w") or die("Unable to open file!");
-    //fwrite($myfile, $sql_get);
-    //fclose($myfile);
-
-    $statement = $conn->query($sql_get);
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    foreach ($results as $result) {
-        $return_arr[] = array("id" => $result['id'],
-            "job_id" => $result['job_id'],
-            "job_date" => $result['job_date'],
-            "job_department" => $result['job_department'],
-            "device_group_id" => $result['device_group_id'],
-            "device_desc" => $result['device_desc'],
-            "machine_no" => $result['machine_no'],
-            "job_problem_detail" => $result['job_problem_detail'],
-            "status" => $result['status']);
-    }
+    $myfile = fopen("myqeury_data.txt", "w") or die("Unable to open file!");
+    fwrite($myfile, $result['job_problem_detail']);
+    fclose($myfile);
 
     echo json_encode($return_arr);
 
@@ -133,31 +106,47 @@ if ($_POST["action"] === 'UPDATE') {
 
         $id = $_POST["id"];
         $job_id = $_POST["job_id"];
+        $job_department = $_POST["department"];
         $device_group_id = $_POST["device_group_id"];
         $device_desc = $_POST["device_desc"];
         $machine_no = $_POST["machine_no"];
         $job_problem_detail = $_POST["job_problem_detail"];
+        $job_solve_detail = $_POST["job_solve_detail"];
+        $status = $_POST["status"];
 
         $sql_find = "SELECT * FROM djob_request WHERE job_id = '" . $job_id . "'";
         $nRows = $conn->query($sql_find)->fetchColumn();
         if ($nRows > 0) {
-            $sql_update = "UPDATE djob_request SET device_group_id=:device_group_id,device_desc=:device_desc,machine_no=:machine_no,job_problem_detail=:job_problem_detail        
+
+            if ($job_department === 'IT') {
+                $sql_update = "UPDATE djob_request SET job_problem_detail=:job_problem_detail,job_solve_detail=:job_solve_detail        
+                               ,status=:status
+                               WHERE id = :id";
+                $query = $conn->prepare($sql_update);
+                $query->bindParam(':job_problem_detail', $job_problem_detail, PDO::PARAM_STR);
+                $query->bindParam(':job_solve_detail', $job_solve_detail, PDO::PARAM_STR);
+                $query->bindParam(':status', $status, PDO::PARAM_STR);
+                $query->bindParam(':id', $id, PDO::PARAM_STR);
+                $query->execute();
+                echo $save_success;
+            } else {
+                $sql_update = "UPDATE djob_request SET device_group_id=:device_group_id,device_desc=:device_desc,machine_no=:machine_no,job_problem_detail=:job_problem_detail        
             WHERE id = :id";
-
-            $txt = $id . " | " . $job_id . " | " . $sql_update;
-            $my_file = fopen("job_save.txt", "w") or die("Unable to open file!");
-            fwrite($my_file, $txt);
-            fclose($my_file);
-
-            $query = $conn->prepare($sql_update);
-            $query->bindParam(':device_group_id', $device_group_id, PDO::PARAM_STR);
-            $query->bindParam(':device_desc', $device_desc, PDO::PARAM_STR);
-            $query->bindParam(':machine_no', $machine_no, PDO::PARAM_STR);
-            $query->bindParam(':job_problem_detail', $job_problem_detail, PDO::PARAM_STR);
-            $query->bindParam(':id', $id, PDO::PARAM_STR);
-            $query->execute();
-            echo $save_success;
+                $query = $conn->prepare($sql_update);
+                $query->bindParam(':device_group_id', $device_group_id, PDO::PARAM_STR);
+                $query->bindParam(':device_desc', $device_desc, PDO::PARAM_STR);
+                $query->bindParam(':machine_no', $machine_no, PDO::PARAM_STR);
+                $query->bindParam(':job_problem_detail', $job_problem_detail, PDO::PARAM_STR);
+                $query->bindParam(':id', $id, PDO::PARAM_STR);
+                $query->execute();
+                echo $save_success;
+            }
         }
+
+        $txt = $id . " | " . $job_id . " | " . $sql_update;
+        $my_file = fopen("job_save.txt", "w") or die("Unable to open file!");
+        fwrite($my_file, $txt);
+        fclose($my_file);
 
     }
 }

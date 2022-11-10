@@ -59,7 +59,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <th>รายละเอียดการแจ้ง</th>
                                                     <th>สถานะ</th>
                                                     <th>Action</th>
-                                                    <th>Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tfoot>
@@ -69,7 +68,6 @@ if (strlen($_SESSION['alogin']) == "") {
                                                     <th>ประเภท</th>
                                                     <th>รายละเอียดการแจ้ง</th>
                                                     <th>สถานะ</th>
-                                                    <th>Action</th>
                                                     <th>Action</th>
                                                 </tr>
                                                 </tfoot>
@@ -93,7 +91,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                             <div class="modal-body">
 
                                                                 <div class="form-group">
-                                                                    <label for="text" class="control-label">เลขที่เอกสาร</label>
+                                                                    <label for="text"
+                                                                           class="control-label">เลขที่เอกสาร</label>
                                                                     <input type="job_id" class="form-control"
                                                                            id="job_id" name="job_id"
                                                                            readonly="true"
@@ -149,7 +148,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <label for="text" class="control-label">หมายเลขเครื่อง / IP Address</label>
+                                                                    <label for="text" class="control-label">หมายเลขเครื่อง
+                                                                        / IP Address</label>
                                                                     <input type="text" class="form-control"
                                                                            id="machine_no" name="machine_no"
                                                                            placeholder="หมายเลขเครื่อง / IP Address">
@@ -164,19 +164,63 @@ if (strlen($_SESSION['alogin']) == "") {
                                                                               rows="3"></textarea>
                                                                 </div>
 
-                                                                <!--div class="form-group">
-                                                                    <label for="status"
-                                                                           class="control-label">Status</label>
-                                                                    <select id="status" name="status"
-                                                                            class="form-control" data-live-search="true"
-                                                                            title="Please select">
-                                                                        <option>Active</option>
-                                                                        <option>Inactive</option>
-                                                                    </select>
-                                                                </div-->
+                                                                <?php if ($_SESSION['department'] === 'IT') { ?>
+                                                                    <div class="form-group">
+                                                                        <label for="job_solve_detail"
+                                                                               class="control-label">การแก้ไข</label>
+                                                                        <textarea class="form-control"
+                                                                                  id="job_solve_detail"
+                                                                                  name="job_solve_detail"
+                                                                                  rows="3"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="status"
+                                                                               class="control-label">Status</label>
+                                                                        N= เปิดใบแจ้ง W = กำลังดำเนินการ , P = รออะไหล่
+                                                                        , Y ดำเนินการเสร็จสิ้น
+                                                                        <select id="status" name="status"
+                                                                                class="form-control"
+                                                                                data-live-search="true"
+                                                                                title="Please select">
+                                                                            <option>N</option>
+                                                                            <option>W</option>
+                                                                            <option>P</option>
+                                                                            <option>Y</option>
+                                                                        </select>
+                                                                    </div>
+                                                                <?php } else { ?>
+
+                                                                    <div class="form-group">
+                                                                        <label for="job_solve_detail"
+                                                                               class="control-label">การแก้ไข</label>
+                                                                        <textarea class="form-control"
+                                                                                  id="job_solve_detail"
+                                                                                  name="job_solve_detail"
+                                                                                  readonly="true"
+                                                                                  rows="3"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="status"
+                                                                               class="control-label">Status</label>
+                                                                        N= เปิดใบแจ้ง W = กำลังดำเนินการ , P = รออะไหล่
+                                                                        , Y ดำเนินการเสร็จสิ้น
+                                                                        <select id="status" name="status"
+                                                                                class="form-control"
+                                                                                data-live-search="true"
+                                                                                readonly="true"
+                                                                                title="Please select">
+                                                                            <option>N</option>
+                                                                            <option>W</option>
+                                                                            <option>P</option>
+                                                                            <option>Y</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                <?php } ?>
 
                                                             </div>
                                                         </div>
+
                                                         <div class="modal-footer">
                                                             <input type="hidden" name="id" id="id"/>
                                                             <input type="hidden" name="action" id="action" value=""/>
@@ -365,8 +409,7 @@ if (strlen($_SESSION['alogin']) == "") {
                     {data: 'device_desc'},
                     {data: 'job_problem_detail'},
                     {data: 'status'},
-                    {data: 'update'},
-                    {data: 'solve'}
+                    {data: 'update'}
                 ]
             });
 
@@ -401,6 +444,8 @@ if (strlen($_SESSION['alogin']) == "") {
                 $('#job_date').val("");
                 $('#job_problem_detail').val("");
                 $('#device_desc').val("");
+                $('#job_solve_detail').val("");
+                $('#status').val("N");
                 $('.modal-title').html("<i class='fa fa-plus'></i> ADD Record");
                 $('#action').val('ADD');
                 $('#save').val('Save');
@@ -429,6 +474,8 @@ if (strlen($_SESSION['alogin']) == "") {
                         let device_desc = response[i].device_desc;
                         let machine_no = response[i].machine_no;
                         let job_problem_detail = response[i].job_problem_detail;
+                        let job_solve_detail = response[i].job_solve_detail;
+                        let status = response[i].status;
 
                         $('#recordModal').modal('show');
                         $('#id').val(id);
@@ -438,49 +485,8 @@ if (strlen($_SESSION['alogin']) == "") {
                         $('#device_desc').val(device_desc);
                         $('#machine_no').val(machine_no);
                         $('#job_problem_detail').val(job_problem_detail);
-                        $('.modal-title').html("<i class='fa fa-plus'></i> Edit Record");
-                        $('#action').val('UPDATE');
-                        $('#save').val('Save');
-                    }
-                },
-                error: function (response) {
-                    alertify.error("error : " + response);
-                }
-            });
-        });
-
-    </script>
-
-    <script>
-
-        $("#TableRecordList").on('click', '.solve', function () {
-            let id = $(this).attr("id");
-            //alert(id);
-            let formData = {action: "GET_DATA_SOLVE", id: id};
-            $.ajax({
-                type: "POST",
-                url: 'model/manage_job_process.php',
-                dataType: "json",
-                data: formData,
-                success: function (response) {
-                    let len = response.length;
-                    for (let i = 0; i < len; i++) {
-                        let id = response[i].id;
-                        let job_id = response[i].job_id;
-                        let job_date = response[i].job_date;
-                        let device_group_id = response[i].device_group_id;
-                        let device_desc = response[i].device_desc;
-                        let machine_no = response[i].machine_no;
-                        let job_problem_detail = response[i].job_problem_detail;
-
-                        $('#recordModal').modal('show');
-                        $('#id').val(id);
-                        $('#job_id').val(job_id);
-                        $('#job_date').val(job_date);
-                        $('#device_group_id').val(device_group_id);
-                        $('#device_desc').val(device_desc);
-                        $('#machine_no').val(machine_no);
-                        $('#job_problem_detail').val(job_problem_detail);
+                        $('#job_solve_detail').val(job_solve_detail);
+                        $('#status').val(status);
                         $('.modal-title').html("<i class='fa fa-plus'></i> Edit Record");
                         $('#action').val('UPDATE');
                         $('#save').val('Save');
