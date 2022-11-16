@@ -12,7 +12,8 @@ include('config/lang.php');
 
 <!-- Sidebar -->
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo $_SESSION['dashboard_page']?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center"
+       href="<?php echo $_SESSION['dashboard_page'] ?>">
         <div class="sidebar-brand-icon">
             <img src="img/logo/Logo-01.png" width="60" height="100">
         </div>
@@ -21,7 +22,7 @@ include('config/lang.php');
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" href="<?php echo $_SESSION['dashboard_page'];?>">
+        <a class="nav-link" href="<?php echo $_SESSION['dashboard_page']; ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -96,12 +97,12 @@ include('config/lang.php');
                                 </div>
                             </div>
                         </li>
-                    <?php
+                        <?php
                     }
                 }
             }
         }
-    }?>
+    } ?>
     <hr class="sidebar-divider">
 
     <!--li class="nav-item active">
@@ -116,9 +117,6 @@ include('config/lang.php');
             <i class="fas fa-sign-out-alt"></i>
             <span>Exit</span></a>
     </li>
-
-
-
 
 
 </ul>

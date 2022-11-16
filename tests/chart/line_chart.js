@@ -1,8 +1,8 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $.ajax({
-        url : "chart_xxx.php",
-        type : "GET",
-        success : function(data){
+        url: "chart_xxx.php",
+        type: "GET",
+        success: function (data) {
             console.log(data);
 
             let userid = [];
@@ -11,7 +11,7 @@ $(document).ready(function(){
             let googleplus_follower = [];
             let line_follower = [];
 
-            for(let i in data) {
+            for (let i in data) {
                 userid.push("UserID " + data[i].userid);
                 facebook_follower.push(data[i].facebook);
                 twitter_follower.push(data[i].twitter);
@@ -72,7 +72,7 @@ $(document).ready(function(){
                 data: chartdata
             });
         },
-        error : function(data) {
+        error: function (data) {
 
         }
     });

@@ -11,7 +11,7 @@ define('DB_NAME', 'charty');
 //get connection
 $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-if(!$mysqli){
+if (!$mysqli) {
     die("Connection failed: " . $mysqli->error);
 }
 

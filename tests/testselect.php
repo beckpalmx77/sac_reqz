@@ -7,22 +7,22 @@
     <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css">
-<style>
-    /* Three image containers (use 25% for four, and 50% for two, etc) */
-    .column {
-        float: left;
-        width: 25%;
-        padding: 5px;
-    }
+    <style>
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 5px;
+        }
 
-    /* Clear floats after image containers */
-    .row::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
+        /* Clear floats after image containers */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
 
-</style>
+    </style>
 </head>
 <body>
 <select id="select_page" style="width:200px;" class="operator">
@@ -103,13 +103,13 @@
 
         for (let i = 0; i < 7; i++) {
             //alert("A");
-            if (i%3 === 1) {
+            if (i % 3 === 1) {
                 image_gallery = image_gallery + "<div class='row'>";
             }
             image_gallery = image_gallery + "<div class='col-6'>";
             image_gallery = image_gallery + "<img src=" + '../gallery/A001_1.jpg' + " width='100%' height='auto' onclick='ightbox(2)'/></div>";
 
-            if (i%3 === 1) {
+            if (i % 3 === 1) {
                 image_gallery = image_gallery + "</div>";
             }
 

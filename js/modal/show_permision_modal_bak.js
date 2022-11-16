@@ -60,7 +60,7 @@ $("#TablePermissionList").on('click', '.select', function () {
                 let main_list = document.getElementsByName("menu_main");
                 let sub_list = document.getElementsByName("menu_sub");
 
-                for (let m = 0; m < main_list.length ; m++) {
+                for (let m = 0; m < main_list.length; m++) {
                     if (main_list[i].value === main_menu_array[i]) {
                         //alert(main_list[m].value + " Match = " + main_menu_array[m]);
                         document.getElementsByName("menu_main")[m].checked = true;
@@ -69,7 +69,7 @@ $("#TablePermissionList").on('click', '.select', function () {
                     }
                 }
 
-                for (let s = 0; s < sub_list.length ; s++) {
+                for (let s = 0; s < sub_list.length; s++) {
                     if (sub_list[s].value === sub_menu_array[s]) {
                         //alert(sub_list[s].value + " Match = " + sub_menu_array[s]);
                         document.getElementsByName("menu_sub")[s].checked = true;

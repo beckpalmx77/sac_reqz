@@ -32,18 +32,19 @@
 
     <style>
         html, body {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
         }
+
         #footer {
-            position:fixed;
-            right:0;
-            bottom:0;
-            margin:0;
-            width:10%;
-            height:10%;
-            background:url(icon_heart.png) no-repeat bottom right;
-            background-size:20%;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+            width: 10%;
+            height: 10%;
+            background: url(icon_heart.png) no-repeat bottom right;
+            background-size: 20%;
         }
     </style>
 
@@ -53,15 +54,19 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 <div style="background-color:black;color:white;padding:30px">Scroll Down</div>
-<div style="background-color:lightgrey;padding:30px 30px 2500px">This example demonstrates how to create a "scroll to top" button that becomes visible
-    <strong>when the user starts to scroll the page</strong>.</div>
+<div style="background-color:lightgrey;padding:30px 30px 2500px">This example demonstrates how to create a "scroll to
+    top" button that becomes visible
+    <strong>when the user starts to scroll the page</strong>.
+</div>
 
 <script>
     //Get the button
     let mybutton = document.getElementById("myBtn");
 
     // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
     function scrollFunction() {
         if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {

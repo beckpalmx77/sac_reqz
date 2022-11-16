@@ -47,8 +47,8 @@ if ($_POST["action"] === 'SEARCH') {
 if ($_POST["action"] === 'ADD') {
     if ($_POST["label"] !== '') {
         $main_menu_id = $_POST["main_menu_id"];
-        $prefix_menu_id = "S" . substr($_POST["main_menu_id"],3);
-        $sub_menu_id = $prefix_menu_id . sprintf('%02s', LAST_ID_COND($conn, "menu_sub", $prefix_menu_id,'sub_menu_id'));
+        $prefix_menu_id = "S" . substr($_POST["main_menu_id"], 3);
+        $sub_menu_id = $prefix_menu_id . sprintf('%02s', LAST_ID_COND($conn, "menu_sub", $prefix_menu_id, 'sub_menu_id'));
         $label = $_POST["label"];
         $label_en = $_POST["label"];
         $link = $_POST["link"];

@@ -10,9 +10,9 @@ $date = date("d/m/Y");
 //fwrite($myfile,  $date);
 //fclose($myfile);
 
- $sql_get = "SELECT BRANCH,sum(CAST(TRD_G_KEYIN AS DECIMAL(10,2))) as  TRD_G_KEYIN
+$sql_get = "SELECT BRANCH,sum(CAST(TRD_G_KEYIN AS DECIMAL(10,2))) as  TRD_G_KEYIN
  FROM ims_product_sale_cockpit 
- WHERE DI_DATE = '" .$date . "'
+ WHERE DI_DATE = '" . $date . "'
  GROUP BY  BRANCH
  ORDER BY BRANCH";
 

@@ -3,14 +3,14 @@ include("../config.php");
 $data = [];
 
 $result = $db->rows("SELECT * FROM ims_event ORDER BY id");
-foreach($result as $row) {
+foreach ($result as $row) {
     $data[] = [
-        'id'              => $row->id,
-        'title'           => $row->title,
-        'start'           => $row->start_event,
-        'end'             => $row->end_event,
+        'id' => $row->id,
+        'title' => $row->title,
+        'start' => $row->start_event,
+        'end' => $row->end_event,
         'backgroundColor' => $row->color,
-        'textColor'       => $row->text_color
+        'textColor' => $row->text_color
     ];
 }
 

@@ -35,14 +35,13 @@ include('includes/Header.php');
 
 
 <script type='text/javascript'>
-    $(document).ready(function(){
-        $('#check').click(function(){
+    $(document).ready(function () {
+        $('#check').click(function () {
             //alert($(this).is(':checked'));
             $(this).is(':checked') ? $('#password').attr('type', 'text') : $('#password').attr('type', 'password');
         });
     });
 </script>
-
 
 
 <body class="bg-gradient-login">

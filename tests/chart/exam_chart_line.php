@@ -5,7 +5,7 @@
             type: "POST",
             contentType: "application/json; charset=utf-8",
             url: "CampComparison.aspx/getLineChartDataload",
-            data:{},
+            data: {},
             async: true,
             cache: false,
             dataType: "json",
@@ -94,7 +94,7 @@
             var lineChart = new Chart(ctx).Line(lineChartData, {
 
                 bezierCurve: true,
-                chartArea: { width: '62%' },
+                chartArea: {width: '62%'},
                 responsive: true,
                 pointDotRadius: 10,
                 scaleShowVerticalLines: false,
@@ -103,6 +103,7 @@
 
             });
         }
+
         function OnErrorCall_(repo) {
             //alert(repo);
         }

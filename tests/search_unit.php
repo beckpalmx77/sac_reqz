@@ -3,37 +3,37 @@
 include('../config/connect_db.php');
 
 // Number of records fetch
-    $numberofrecords = 10;
+$numberofrecords = 10;
 
-    if(!isset($_POST['searchTerm'])){
+if (!isset($_POST['searchTerm'])) {
 
-        // Fetch records
-        $stmt = $conn->prepare("SELECT * FROM ims_unit ORDER BY unit_name LIMIT :limit");
-        $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
-        $stmt->execute();
-        $ims_unitList = $stmt->fetchAll();
+    // Fetch records
+    $stmt = $conn->prepare("SELECT * FROM ims_unit ORDER BY unit_name LIMIT :limit");
+    $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
+    $stmt->execute();
+    $ims_unitList = $stmt->fetchAll();
 
-    }else{
+} else {
 
-        $search = $_POST['searchTerm'];// Search text
+    $search = $_POST['searchTerm'];// Search text
 
-        // Fetch records
-        $stmt = $conn->prepare("SELECT * FROM ims_unit WHERE unit_name like :unit_name ORDER BY unit_name LIMIT :limit");
-        $stmt->bindValue(':unit_name', '%'.$search.'%', PDO::PARAM_STR);
-        $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
-        $stmt->execute();
-        $ims_unitList = $stmt->fetchAll();
+    // Fetch records
+    $stmt = $conn->prepare("SELECT * FROM ims_unit WHERE unit_name like :unit_name ORDER BY unit_name LIMIT :limit");
+    $stmt->bindValue(':unit_name', '%' . $search . '%', PDO::PARAM_STR);
+    $stmt->bindValue(':limit', (int)$numberofrecords, PDO::PARAM_INT);
+    $stmt->execute();
+    $ims_unitList = $stmt->fetchAll();
 
-    }
+}
 
-    $response = array();
+$response = array();
 
 // Read Data
-    foreach($ims_unitList as $user){
-        $response[] = array(
-            "id" => $user['id'],
-            "text" => $user['unit_name']
-        );
-    }
+foreach ($ims_unitList as $user) {
+    $response[] = array(
+        "id" => $user['id'],
+        "text" => $user['unit_name']
+    );
+}
 
-    echo json_encode($response);
+echo json_encode($response);

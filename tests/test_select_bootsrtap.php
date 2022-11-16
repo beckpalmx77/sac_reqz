@@ -10,7 +10,8 @@
     <script src="../vendor/bootstrap-select/js/bootstrap-select.js"></script>
 
 </head>
-<body><form class="form-inline">
+<body>
+<form class="form-inline">
     <div class="form-group">
         <label class="col-md-3 control-label" for="select-testing">select:</label>
     </div>
@@ -23,5 +24,6 @@
             <option>Egg</option>
         </select>
     </div>
-</form></body>
+</form>
+</body>
 </html>

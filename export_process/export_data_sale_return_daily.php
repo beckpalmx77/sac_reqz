@@ -59,35 +59,34 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
     //$my_file = fopen("D-sac_str_return.txt", "w") or die("Unable to open file!");
     //fwrite($my_file, "Data " . " = " . $TRD_QTY . " | " . $TRD_U_PRC . " | "
-        //. $TRD_DSC_KEYINV . " | " . $TRD_B_SELL . " | " . $TRD_B_VAT . " | " . $TRD_G_KEYIN);
+    //. $TRD_DSC_KEYINV . " | " . $TRD_B_SELL . " | " . $TRD_B_VAT . " | " . $TRD_G_KEYIN);
     //fclose($my_file);
 
 
+    if (strpos($row['DT_DOCCODE'], $DT_DOCCODE_MINUS) !== false) {
+        $data .= "-" . $TRD_QTY . ",";
+        $data .= "-" . $TRD_U_PRC . ",";
+        $data .= "-" . $TRD_DSC_KEYINV . ",";
+        $data .= "-" . $TRD_B_SELL . ",";
+        $data .= "-" . $TRD_B_VAT . ",";
+        $data .= "-" . $TRD_G_KEYIN . ",";
+    } else {
+        $data .= $TRD_QTY . ",";
+        $data .= $TRD_U_PRC . ",";
+        $data .= $TRD_DSC_KEYINV . ",";
+        $data .= $TRD_B_SELL . ",";
+        $data .= $TRD_B_VAT . ",";
+        $data .= $TRD_G_KEYIN . ",";
+    }
+    /*
+        $data .= $TRD_QTY . ",";
+        $data .= $TRD_U_PRC . ",";
+        $data .= $TRD_DSC_KEYINV . ",";
+        $data .= $TRD_B_SELL . ",";
+        $data .= $TRD_B_VAT . ",";
+        $data .= $TRD_G_KEYIN . ",";
 
-if(strpos($row['DT_DOCCODE'], $DT_DOCCODE_MINUS) !== false){
-    $data .= "-" . $TRD_QTY . ",";
-    $data .= "-" . $TRD_U_PRC . ",";
-    $data .= "-" . $TRD_DSC_KEYINV . ",";
-    $data .= "-" . $TRD_B_SELL . ",";
-    $data .= "-" . $TRD_B_VAT . ",";
-    $data .= "-" . $TRD_G_KEYIN . ",";
-} else {
-    $data .= $TRD_QTY . ",";
-    $data .= $TRD_U_PRC . ",";
-    $data .= $TRD_DSC_KEYINV . ",";
-    $data .= $TRD_B_SELL . ",";
-    $data .= $TRD_B_VAT . ",";
-    $data .= $TRD_G_KEYIN . ",";
-}
-/*
-    $data .= $TRD_QTY . ",";
-    $data .= $TRD_U_PRC . ",";
-    $data .= $TRD_DSC_KEYINV . ",";
-    $data .= $TRD_B_SELL . ",";
-    $data .= $TRD_B_VAT . ",";
-    $data .= $TRD_G_KEYIN . ",";
-
-*/
+    */
 
 
     $data .= " " . ",";

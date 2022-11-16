@@ -14,14 +14,14 @@ $searchArray = array();
 
 ## Search
 $searchQuery = " ";
-if($searchValue != ''){
+if ($searchValue != '') {
     $searchQuery = " AND (email LIKE :email or 
         first_name LIKE :first_name OR 
         last_name LIKE :last_name ) ";
     $searchArray = array(
-        'email'=>"%$searchValue%",
-        'first_name'=>"%$searchValue%",
-        'last_name'=>"%$searchValue%"
+        'email' => "%$searchValue%",
+        'first_name' => "%$searchValue%",
+        'last_name' => "%$searchValue%"
     );
 }
 
@@ -32,17 +32,17 @@ $records = $stmt->fetch();
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$stmt = $conn->prepare("SELECT COUNT(*) AS allcount FROM ims_user WHERE 1 ".$searchQuery);
+$stmt = $conn->prepare("SELECT COUNT(*) AS allcount FROM ims_user WHERE 1 " . $searchQuery);
 $stmt->execute($searchArray);
 $records = $stmt->fetch();
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$stmt = $conn->prepare("SELECT * FROM ims_user WHERE 1 ".$searchQuery." ORDER BY ".$columnName." ".$columnSortOrder." LIMIT :limit,:offset");
+$stmt = $conn->prepare("SELECT * FROM ims_user WHERE 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset");
 
 // Bind values
-foreach($searchArray as $key=>$search){
-    $stmt->bindValue(':'.$key, $search,PDO::PARAM_STR);
+foreach ($searchArray as $key => $search) {
+    $stmt->bindValue(':' . $key, $search, PDO::PARAM_STR);
 }
 
 $stmt->bindValue(':limit', (int)$row, PDO::PARAM_INT);
@@ -52,13 +52,13 @@ $empRecords = $stmt->fetchAll();
 
 $data = array();
 
-foreach($empRecords as $row){
+foreach ($empRecords as $row) {
     $data[] = array(
-        "id"=>$row['id'],
-        "email"=>$row['email'],
-        "first_name"=>$row['first_name'],
-        "last_name"=>$row['last_name'],
-        "status"=>$row['status']
+        "id" => $row['id'],
+        "email" => $row['email'],
+        "first_name" => $row['first_name'],
+        "last_name" => $row['last_name'],
+        "status" => $row['status']
     );
 }
 

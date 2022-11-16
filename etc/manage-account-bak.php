@@ -218,28 +218,31 @@ include('includes/Header.php');
 
 
 <script>
-    <script>
-    $(document).ready(function(){
+    <
+    script >
+    $(document).ready(function () {
         $('#TableRecordList').DataTable({
             'processing': true,
             'serverSide': true,
             'serverMethod': 'post',
             'ajax': {
-                'url':'get_records.php'
+                'url': 'get_records.php'
             },
             'columns': [
-                { data: 'id' },
-                { data: 'email' },
-                { data: 'first_name' },
-                { data: 'last_name' },
-                { data: 'status' },
+                {data: 'id'},
+                {data: 'email'},
+                {data: 'first_name'},
+                {data: 'last_name'},
+                {data: 'status'},
             ]
         });
     });
 </script>
 </script>
 
-<script type="text/javascript">
+<
+script
+type = "text/javascript" >
 
     function delete_id(id) {
 
@@ -313,16 +316,16 @@ include('includes/Header.php');
 
 
 <script>
-    $("#recordModal").on('submit','#recordForm', function(event){
+    $("#recordModal").on('submit', '#recordForm', function (event) {
         event.preventDefault();
-        $('#save').attr('disabled','disabled');
+        $('#save').attr('disabled', 'disabled');
         let formData = $(this).serialize();
 
         $.ajax({
             url: 'model/manage_account_process.php',
-            method:"POST",
-            data:formData,
-            success:function(data){
+            method: "POST",
+            data: formData,
+            success: function (data) {
                 alert(data);
                 $('#recordForm')[0].reset();
                 $('#recordModal').modal('hide');

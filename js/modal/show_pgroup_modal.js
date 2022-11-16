@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     let formData = {action: "GET_PRODUCT_GROUP", sub_action: "GET_SELECT"};
     let dataRecords = $('#TablePGList').DataTable({

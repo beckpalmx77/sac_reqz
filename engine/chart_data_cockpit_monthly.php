@@ -13,7 +13,7 @@ $year = date("Y");
 $sql_get = "
  SELECT BRANCH,sum(CAST(TRD_G_KEYIN AS DECIMAL(10,2))) as  TRD_G_KEYIN
  FROM ims_product_sale_cockpit 
- WHERE DI_YEAR = '" . $year .  "' AND DI_MONTH = '" . $month .  "'
+ WHERE DI_YEAR = '" . $year . "' AND DI_MONTH = '" . $month . "'
  GROUP BY  BRANCH
  ORDER BY BRANCH
 ";

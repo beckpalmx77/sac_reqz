@@ -24,7 +24,7 @@ $sql_get = " SELECT BRANCH,DI_MONTH,DI_MONTH_NAME,DI_YEAR
 $statement = $conn->query($sql_get);
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($results as $result) {
-    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] ."'"
+    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] . "'"
         . " AND DI_MONTH = '" . $result["DI_MONTH"] . "'"
         . " AND DI_YEAR = '" . $result["DI_YEAR"] . "'";
     $nRows = $conn->query($sql_find)->fetchColumn();
@@ -63,7 +63,7 @@ $sql_get = " SELECT BRANCH,DI_MONTH,DI_MONTH_NAME,DI_YEAR
 $statement = $conn->query($sql_get);
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($results as $result) {
-    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] ."'"
+    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] . "'"
         . " AND DI_MONTH = '" . $result["DI_MONTH"] . "'"
         . " AND DI_YEAR = '" . $result["DI_YEAR"] . "'";
     $nRows = $conn->query($sql_find)->fetchColumn();
@@ -106,7 +106,7 @@ $sql_get = " SELECT BRANCH,DI_MONTH,DI_MONTH_NAME,DI_YEAR
 $statement = $conn->query($sql_get);
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($results as $result) {
-    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] ."'"
+    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] . "'"
         . " AND DI_MONTH = '" . $result["DI_MONTH"] . "'"
         . " AND DI_YEAR = '" . $result["DI_YEAR"] . "'";
     $nRows = $conn->query($sql_find)->fetchColumn();
@@ -136,7 +136,7 @@ $sql_get = " SELECT BRANCH,DI_MONTH,DI_MONTH_NAME,DI_YEAR
 $statement = $conn->query($sql_get);
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($results as $result) {
-    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] ."'"
+    $sql_find = "SELECT * FROM ims_report_product_sale_summary WHERE BRANCH = '" . $result["BRANCH"] . "'"
         . " AND DI_MONTH = '" . $result["DI_MONTH"] . "'"
         . " AND DI_YEAR = '" . $result["DI_YEAR"] . "'";
     $nRows = $conn->query($sql_find)->fetchColumn();

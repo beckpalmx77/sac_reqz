@@ -18,7 +18,7 @@ $stmt_sqlsvr->execute();
 
 while ($result_sqlsvr = $stmt_sqlsvr->fetch(PDO::FETCH_ASSOC)) {
 
-    $sql_find = "SELECT * FROM ims_product WHERE product_id = '" . $result_sqlsvr["SKU_CODE"] ."'"
+    $sql_find = "SELECT * FROM ims_product WHERE product_id = '" . $result_sqlsvr["SKU_CODE"] . "'"
         . " AND product_key = '" . $result_sqlsvr["SKU_KEY"] . "'"
         . " AND price_code = '" . $result_sqlsvr["ARPRB_CODE"] . "'";
 

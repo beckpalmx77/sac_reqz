@@ -25,10 +25,10 @@ function LAST_ID($conn, $table, $field)
     return $ret_value;
 }
 
-function LAST_ID_COND($conn, $table, $cond ,$field)
+function LAST_ID_COND($conn, $table, $cond, $field)
 {
     $row = $conn->query("select count(" . $field . ") as record_number from " . $table
-         . " where sub_menu_id like '" . $cond . "%'")->fetch();
+        . " where sub_menu_id like '" . $cond . "%'")->fetch();
     if (empty($row["0"])) {
         $ret_value = 1;
     } else {

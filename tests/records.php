@@ -9,7 +9,7 @@ $con = mysqli_connect($hostname, $username, $password, $database) or die("Error 
 $sql = "select * from ims_user";
 $result = mysqli_query($con, $sql);
 
-while($row = mysqli_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
     $array[] = $row;
 }
 

@@ -26,8 +26,8 @@ $statement = $conn->query($sql_get);
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($results as $result) {
-  $return_arr[] = array("DI_DATE" => $result['DI_DATE'],
-      "TRD_G_KEYIN" => $result['TRD_G_KEYIN']);
+    $return_arr[] = array("DI_DATE" => $result['DI_DATE'],
+        "TRD_G_KEYIN" => $result['TRD_G_KEYIN']);
 }
 
 //$myfile = fopen("qry_file1.txt", "w") or die("Unable to open file!");

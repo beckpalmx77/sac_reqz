@@ -3,15 +3,15 @@ include("config/connect_db.php");
 
 $year_start = date("Y");
 $year = '';
-$label1 = '' ;
-$label2 = '' ;
-$label3 = '' ;
-$label4 = '' ;
-$data1 = '' ;
-$data2 = '' ;
-$data3 = '' ;
-$data4 = '' ;
-$i = 1 ;
+$label1 = '';
+$label2 = '';
+$label3 = '';
+$label4 = '';
+$data1 = '';
+$data2 = '';
+$data3 = '';
+$data4 = '';
+$i = 1;
 
 $BRANCH = $_POST["branch"];
 //$BRANCH = "CP-BB";
@@ -53,12 +53,12 @@ for ($x = 0; $x <= 1; $x++) {
 
     switch ($x) {
         case 0:
-            $label1=$year;
-            $data1=$str_return;
+            $label1 = $year;
+            $data1 = $str_return;
             break;
         case 1:
-            $label2=$year;
-            $data2=$str_return;
+            $label2 = $year;
+            $data2 = $str_return;
             break;
     }
 

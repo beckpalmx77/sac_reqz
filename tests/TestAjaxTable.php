@@ -23,20 +23,20 @@
 </table>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#TableRecordList').DataTable({
             'processing': true,
             'serverSide': true,
             'serverMethod': 'post',
             'ajax': {
-                'url':'get_records.php'
+                'url': 'get_records.php'
             },
             'columns': [
-                { data: 'id' },
-                { data: 'email' },
-                { data: 'first_name' },
-                { data: 'last_name' },
-                { data: 'status' },
+                {data: 'id'},
+                {data: 'email'},
+                {data: 'first_name'},
+                {data: 'last_name'},
+                {data: 'status'},
             ]
         });
     });

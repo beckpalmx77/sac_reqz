@@ -15,7 +15,7 @@ if ($_POST["action"] === 'GET_DATA') {
 
     $sql_get = "SELECT im.*,dm.department_desc FROM ims_user im
     left join mdepartment dm on dm.department_id = im.department_id 
-    WHERE im.id = " . $id ;
+    WHERE im.id = " . $id;
 
     //$myfile = fopen("macc-param.txt", "w") or die("Unable to open file!");
     //fwrite($myfile,  $sql_get);
@@ -34,7 +34,6 @@ if ($_POST["action"] === 'GET_DATA') {
             "account_type" => $result['account_type'],
             "status" => $result['status']);
     }
-
 
 
     echo json_encode($return_arr);

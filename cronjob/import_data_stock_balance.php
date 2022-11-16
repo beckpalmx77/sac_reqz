@@ -15,11 +15,10 @@ $sql_sqlsvr = $select_query;
 //fclose($myfile);
 
 
-
 $stmt_sqlsvr = $conn_sqlsvr->prepare($sql_sqlsvr);
 $stmt_sqlsvr->execute();
 
-echo $sql_sqlsvr ;
+echo $sql_sqlsvr;
 
 $return_arr = array();
 
@@ -46,7 +45,7 @@ while ($result_sqlsvr = $stmt_sqlsvr->fetch(PDO::FETCH_ASSOC)) {
         AND SKM_LOT_NO = '" . $result_sqlsvr["SKM_LOT_NO"] . "' 
         AND SKM_SERIAL  = '" . $result_sqlsvr["SKM_SERIAL"] . "'";
 
-        echo "Update " . $result_sqlsvr["SKU_CODE"] . " " ;
+        echo "Update " . $result_sqlsvr["SKU_CODE"] . " ";
 
         $query = $conn->prepare($sql_update);
         $query->bindParam(':ICCAT_NAME', $result_sqlsvr["ICCAT_NAME"], PDO::PARAM_STR);

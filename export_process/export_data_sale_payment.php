@@ -10,7 +10,7 @@ $filename = "Data_Sale_Return-Daily-" . date('m/d/Y H:i:s', time()) . ".csv";
 include('../config/connect_sqlserver.php');
 include('../cond_file/doc_sale_payment.php');
 
-$table_filed_where  = "v_sale_payment.BUY_DATE";
+$table_filed_where = "v_sale_payment.BUY_DATE";
 
 $doc_date_start = substr($_POST['doc_date_start'], 6, 4) . "/" . substr($_POST['doc_date_start'], 3, 2) . "/" . substr($_POST['doc_date_start'], 0, 2);
 $doc_date_to = substr($_POST['doc_date_to'], 6, 4) . "/" . substr($_POST['doc_date_to'], 3, 2) . "/" . substr($_POST['doc_date_to'], 0, 2);

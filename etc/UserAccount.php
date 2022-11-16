@@ -40,7 +40,8 @@
                 <i class="far fa-fw fa-window-maximize"></i>
                 <span>Bootstrap UI</span>
             </a>
-            <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap"
+                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Bootstrap UI</h6>
                     <a class="collapse-item" href="alerts.html">Alerts</a>
@@ -68,7 +69,8 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
+               aria-expanded="true"
                aria-controls="collapseTable">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tables</span>
@@ -92,7 +94,8 @@
             Examples
         </div>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage"
+               aria-expanded="true"
                aria-controls="collapsePage">
                 <i class="fas fa-fw fa-columns"></i>
                 <span>Pages</span>
@@ -126,7 +129,8 @@
                 </button>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                           data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
@@ -134,8 +138,10 @@
                              aria-labelledby="searchDropdown">
                             <form class="navbar-search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                                           aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                                    <input type="text" class="form-control bg-light border-1 small"
+                                           placeholder="What do you want to look for?"
+                                           aria-label="Search" aria-describedby="basic-addon2"
+                                           style="border-color: #3f51b5;">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
@@ -146,7 +152,8 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                           data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <span class="badge badge-danger badge-counter">3+</span>
@@ -193,7 +200,8 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                           data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <span class="badge badge-warning badge-counter">2</span>
@@ -209,8 +217,10 @@
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
-                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
-                                        having.</div>
+                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                        problem I've been
+                                        having.
+                                    </div>
                                     <div class="small text-gray-500">Udin Cilok · 58m</div>
                                 </div>
                             </a>
@@ -220,8 +230,10 @@
                                     <div class="status-indicator bg-default"></div>
                                 </div>
                                 <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
-                                        say this to all dogs, even if they aren't good...</div>
+                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told
+                                        me that people
+                                        say this to all dogs, even if they aren't good...
+                                    </div>
                                     <div class="small text-gray-500">Jaenab · 2w</div>
                                 </div>
                             </a>
@@ -229,7 +241,8 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                           data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-tasks fa-fw"></i>
                             <span class="badge badge-success badge-counter">3</span>
@@ -245,7 +258,8 @@
                                         <div class="small float-right"><b>50%</b></div>
                                     </div>
                                     <div class="progress" style="height: 12px;">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50"
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
+                                             aria-valuenow="50"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -256,7 +270,8 @@
                                         <div class="small float-right"><b>30%</b></div>
                                     </div>
                                     <div class="progress" style="height: 12px;">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30"
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 30%"
+                                             aria-valuenow="30"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -267,7 +282,8 @@
                                         <div class="small float-right"><b>75%</b></div>
                                     </div>
                                     <div class="progress" style="height: 12px;">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 75%"
+                                             aria-valuenow="75"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -277,12 +293,14 @@
                     </li>
                     <div class="topbar-divider d-none d-sm-block"></div>
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
                             <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
@@ -296,7 +314,8 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal"
+                               data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -328,14 +347,16 @@
                                 <form>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                               aria-describedby="emailHelp"
                                                placeholder="Enter email">
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your
                                             email with anyone else.</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <input type="password" class="form-control" id="exampleInputPassword1"
+                                               placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-file">
@@ -345,8 +366,10 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                            <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="customControlAutosizing">
+                                            <label class="custom-control-label" for="customControlAutosizing">Remember
+                                                me</label>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -360,12 +383,15 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Sizing</h6>
                             </div>
                             <div class="card-body">
-                                <p>Set heights using classes like <code class="highlighter-rouge">.form-control-lg</code> and <code
+                                <p>Set heights using classes like <code
+                                            class="highlighter-rouge">.form-control-lg</code> and <code
                                             class="highlighter-rouge">.form-control-sm</code>.</p>
                                 <p>Example for form general</p>
-                                <input class="form-control form-control-lg mb-3" type="text" placeholder=".form-control-lg">
+                                <input class="form-control form-control-lg mb-3" type="text"
+                                       placeholder=".form-control-lg">
                                 <input class="form-control  mb-3" type="text" placeholder="Default input">
-                                <input class="form-control form-control-sm  mb-3" type="text" placeholder=".form-control-sm">
+                                <input class="form-control form-control-sm  mb-3" type="text"
+                                       placeholder=".form-control-sm">
                                 <p>Example for Select</p>
                                 <select class="form-control form-control-lg  mb-3">
                                     <option>Large select</option>
@@ -389,13 +415,15 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                                         <div class="col-sm-9">
-                                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                            <input type="email" class="form-control" id="inputEmail3"
+                                                   placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
                                         <div class="col-sm-9">
-                                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                            <input type="password" class="form-control" id="inputPassword3"
+                                                   placeholder="Password">
                                         </div>
                                     </div>
                                     <fieldset class="form-group">
@@ -403,17 +431,22 @@
                                             <legend class="col-form-label col-sm-3 pt-0">Radios</legend>
                                             <div class="col-sm-9">
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadio1">First Radio</label>
+                                                    <input type="radio" id="customRadio1" name="customRadio"
+                                                           class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadio1">First
+                                                        Radio</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadio2">Second Radio</label>
+                                                    <input type="radio" id="customRadio2" name="customRadio"
+                                                           class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadio2">Second
+                                                        Radio</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" name="radioDisabled" id="customRadioDisabled1"
                                                            class="custom-control-input" disabled>
-                                                    <label class="custom-control-label" for="customRadioDisabled1">Third Radio Disabled</label>
+                                                    <label class="custom-control-label" for="customRadioDisabled1">Third
+                                                        Radio Disabled</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -423,7 +456,8 @@
                                         <div class="col-sm-9">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                                                <label class="custom-control-label" for="customCheck1">Check this custom
+                                                    checkbox</label>
                                             </div>
                                         </div>
                                     </div>
@@ -472,7 +506,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Example textarea</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                  rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlReadonly">Readonly</label>
@@ -499,43 +534,56 @@
                                         <label>Checkbox</label>
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                            <label class="custom-control-label" for="customCheck2">Check this custom checkbox 1</label>
+                                            <label class="custom-control-label" for="customCheck2">Check this custom
+                                                checkbox 1</label>
                                         </div>
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">Check this custom checkbox 2</label>
+                                            <label class="custom-control-label" for="customCheck3">Check this custom
+                                                checkbox 2</label>
                                         </div>
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheckDisabled1" disabled>
-                                            <label class="custom-control-label" for="customCheckDisabled1">Check this custom
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="customCheckDisabled1" disabled>
+                                            <label class="custom-control-label" for="customCheckDisabled1">Check this
+                                                custom
                                                 checkbox</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Radio Button</label>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio3">Toggle this custom radio</label>
+                                            <input type="radio" id="customRadio3" name="customRadio"
+                                                   class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio3">Toggle this custom
+                                                radio</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio4">Or toggle this other custom radio</label>
+                                            <input type="radio" id="customRadio4" name="customRadio"
+                                                   class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio4">Or toggle this other
+                                                custom radio</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" name="radioDisabled" id="customRadioDisabled2" class="custom-control-input"
+                                            <input type="radio" name="radioDisabled" id="customRadioDisabled2"
+                                                   class="custom-control-input"
                                                    disabled>
-                                            <label class="custom-control-label" for="customRadioDisabled2">Toggle this custom radio</label>
+                                            <label class="custom-control-label" for="customRadioDisabled2">Toggle this
+                                                custom radio</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Switches</label>
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+                                            <label class="custom-control-label" for="customSwitch1">Toggle this switch
+                                                element</label>
                                         </div>
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
-                                            <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+                                            <input type="checkbox" class="custom-control-input" disabled
+                                                   id="customSwitch2">
+                                            <label class="custom-control-label" for="customSwitch2">Disabled switch
+                                                element</label>
                                         </div>
                                     </div>
                                 </form>
@@ -564,9 +612,11 @@
                                 <label for="basic-url">Your vanity URL</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                                        <span class="input-group-text"
+                                              id="basic-addon3">https://example.com/users/</span>
                                     </div>
-                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                    <input type="text" class="form-control" id="basic-url"
+                                           aria-describedby="basic-addon3">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -585,8 +635,10 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                                        <button class="btn btn-outline-primary dropdown-toggle" type="button"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">Dropdown
+                                        </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#">Action</a>
                                             <a class="dropdown-item" href="#">Another action</a>
@@ -595,7 +647,8 @@
                                             <a class="dropdown-item" href="#">Separated link</a>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                                    <input type="text" class="form-control"
+                                           aria-label="Text input with dropdown button">
                                 </div>
                             </div>
                         </div>
@@ -606,16 +659,19 @@
                 <!-- Documentation Link -->
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <p>For more documentations you can visit<a href="https://getbootstrap.com/docs/4.3/components/forms/"
-                                                                   target="_blank">
+                        <p>For more documentations you can visit<a
+                                    href="https://getbootstrap.com/docs/4.3/components/forms/"
+                                    target="_blank">
                                 bootstrap forms documentations.</a> and <a
-                                    href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">bootstrap input
+                                    href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">bootstrap
+                                input
                                 groups documentations</a></p>
                     </div>
                 </div>
 
                 <!-- Modal Logout -->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabelLogout"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -629,7 +685,8 @@
                                 <p>Are you sure you want to logout?</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel
+                                </button>
                                 <a href="login.php" class="btn btn-primary">Logout</a>
                             </div>
                         </div>

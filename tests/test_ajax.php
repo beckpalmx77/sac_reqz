@@ -13,22 +13,22 @@
             crossorigin="anonymous"></script>
 
 
-    <script type = "text/javascript" language = "javascript">
-        $(document).ready(function() {
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
 
-            $("#driver").click(function(event){
+            $("#driver").click(function (event) {
 
                 $.post(
                     "serialize.php",
                     $("#formData").serializeArray(),
-                    function(data) {
+                    function (data) {
                         $('#results_1').html(data);
                     }
                 );
 
                 let fields = $("#formData").serializeArray();
                 //$("#results_2").empty();
-                jQuery.each(fields, function(i, field){
+                jQuery.each(fields, function (i, field) {
                     $("#results_2").append(field.value + " ");
                 });
 
@@ -56,8 +56,6 @@
         <button class="btn btn-primary mb-3">Click</button>
     </form>
 </div>
-
-
 
 
 </body>

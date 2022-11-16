@@ -63,7 +63,7 @@ foreach ($empRecords as $row) {
         "update" => "<button type='button' name='update' id='" . $row['id'] . "' class='btn btn-info btn-xs update'>Update</button>",
         "delete" => "<button type='button' name='delete' id='" . $row['id'] . "' class='btn btn-danger btn-xs delete'>Delete</button>",
         //"link" => "<a href='#' id='" . $row['id'] . "' onclick='MyFunction(" . $row['id'] . ");' data-toggle=" . $row['id'] . ">LINK</a>",
-        "rec_id" => "<input type='hidden' id='rec_id' " . $row['id'] .  " name='rec_id' " . $row['id'] .  ">",
+        "rec_id" => "<input type='hidden' id='rec_id' " . $row['id'] . " name='rec_id' " . $row['id'] . ">",
         "status" => $row['status']
     );
 

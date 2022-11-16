@@ -10,7 +10,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-heart"></i>
-                <span>&nbsp;<?php echo $_SESSION['system_name']?></span>
+                <span>&nbsp;<?php echo $_SESSION['system_name'] ?></span>
             </a>
         </li>
 
@@ -70,21 +70,18 @@
 
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-        function load_unseen_notification(view = '')
-        {
+        function load_unseen_notification(view = '') {
             $.ajax({
-                url:"fetch.php",
-                method:"POST",
-                data:{view:view},
-                dataType:"json",
-                success:function(data)
-                {
+                url: "fetch.php",
+                method: "POST",
+                data: {view: view},
+                dataType: "json",
+                success: function (data) {
                     alert(data);
                     $('.dropdown-menu').html(data.notification);
-                    if(data.unseen_notification > 0)
-                    {
+                    if (data.unseen_notification > 0) {
                         $('.count').html(data.unseen_notification);
                     }
                 }
@@ -93,13 +90,13 @@
 
         load_unseen_notification();
 
-        $(document).on('click', '.dropdown-toggle', function(){
+        $(document).on('click', '.dropdown-toggle', function () {
             $('.count').html('');
             load_unseen_notification('yes');
         });
 
         //setInterval(function(){
-            //load_unseen_notification();;
+        //load_unseen_notification();;
         //}, 5000);
 
     });

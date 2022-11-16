@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     let formData = {action: "GET_FAQ", sub_action: "GET_SELECT"};
     let dataRecords = $('#TableAnwserList').DataTable({

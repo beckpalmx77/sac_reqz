@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-    $('body').on('click', '.datetimepicker', function() {
+    $('body').on('click', '.datetimepicker', function () {
         $(this).not('.hasDateTimePicker').datetimepicker({
             controlType: 'select',
             changeMonth: true,
@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
             dateFormat: "dd-mm-yy",
             timeFormat: 'HH:mm:ss',
             yearRange: "1900:+10",
-            showOn:'focus',
+            showOn: 'focus',
             firstDay: 1
         }).focus();
     });
 
     $(".colorpicker").colorpicker();
-    
+
     let calendarEl = document.getElementById('calendar');
 
     let calendar = new FullCalendar.Calendar(calendarEl, {
@@ -31,42 +31,42 @@ document.addEventListener('DOMContentLoaded', function() {
         //uncomment to have a default date
         //defaultDate: '2020-04-07',
         events: '../api/calendar/load.php',
-        eventDrop: function(arg) {
-            let start = arg.event.start.toDateString()+' '+arg.event.start.getHours()+':'+arg.event.start.getMinutes()+':'+arg.event.start.getSeconds();
+        eventDrop: function (arg) {
+            let start = arg.event.start.toDateString() + ' ' + arg.event.start.getHours() + ':' + arg.event.start.getMinutes() + ':' + arg.event.start.getSeconds();
             if (arg.event.end == null) {
                 end = start;
             } else {
-                let end = arg.event.end.toDateString()+' '+arg.event.end.getHours()+':'+arg.event.end.getMinutes()+':'+arg.event.end.getSeconds();
+                let end = arg.event.end.toDateString() + ' ' + arg.event.end.getHours() + ':' + arg.event.end.getMinutes() + ':' + arg.event.end.getSeconds();
             }
 
             $.ajax({
-              url:"api/calendar/update.php",
-              type:"POST",
-              data:{id:arg.event.id, start:start, end:end},
+                url: "api/calendar/update.php",
+                type: "POST",
+                data: {id: arg.event.id, start: start, end: end},
             });
         },
-        eventResize: function(arg) {
-            let start = arg.event.start.toDateString()+' '+arg.event.start.getHours()+':'+arg.event.start.getMinutes()+':'+arg.event.start.getSeconds();
-            let end = arg.event.end.toDateString()+' '+arg.event.end.getHours()+':'+arg.event.end.getMinutes()+':'+arg.event.end.getSeconds();
+        eventResize: function (arg) {
+            let start = arg.event.start.toDateString() + ' ' + arg.event.start.getHours() + ':' + arg.event.start.getMinutes() + ':' + arg.event.start.getSeconds();
+            let end = arg.event.end.toDateString() + ' ' + arg.event.end.getHours() + ':' + arg.event.end.getMinutes() + ':' + arg.event.end.getSeconds();
 
             $.ajax({
-              url:"api/calendar/update.php",
-              type:"POST",
-              data:{id:arg.event.id, start:start, end:end},
+                url: "api/calendar/update.php",
+                type: "POST",
+                data: {id: arg.event.id, start: start, end: end},
             });
         },
-        eventClick: function(arg) {
+        eventClick: function (arg) {
             let id = arg.event.id;
-            
+
             $('#editEventId').val(id);
-            $('#deleteEvent').attr('data-id', id); 
+            $('#deleteEvent').attr('data-id', id);
 
             $.ajax({
-              url:"api/calendar/getevent.php",
-              type:"POST",
-              dataType: 'json',
-              data:{id:id},
-              success: function(data) {
+                url: "api/calendar/getevent.php",
+                type: "POST",
+                dataType: 'json',
+                data: {id: id},
+                success: function (data) {
                     $('#editEventTitle').val(data.title);
                     $('#editStartDate').val(data.start);
                     $('#editEndDate').val(data.end);
@@ -76,29 +76,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            $('body').on('click', '#deleteEvent', function() {
-                if(confirm("Are you sure you want to remove it?")) {
+            $('body').on('click', '#deleteEvent', function () {
+                if (confirm("Are you sure you want to remove it?")) {
                     $.ajax({
-                        url:"api/calendar/delete.php",
-                        type:"POST",
-                        data:{id:arg.event.id},
-                    }); 
+                        url: "api/calendar/delete.php",
+                        type: "POST",
+                        data: {id: arg.event.id},
+                    });
 
                     //close model
                     $('#editeventmodal').modal('hide');
 
                     //refresh calendar
-                    calendar.refetchEvents();         
+                    calendar.refetchEvents();
                 }
             });
-            
+
             calendar.refetchEvents();
         }
     });
 
     calendar.render();
 
-    $('#createEvent').submit(function(event) {
+    $('#createEvent').submit(function (event) {
 
         // stop the form refreshing the page
         event.preventDefault();
@@ -108,16 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // process the form
         $.ajax({
-            type        : "POST",
-            url         : '../api/calendar/insert.php',
-            data        : $(this).serialize(),
-            dataType    : 'json',
-            encode      : true
-        }).done(function(data) {
+            type: "POST",
+            url: '../api/calendar/insert.php',
+            data: $(this).serialize(),
+            dataType: 'json',
+            encode: true
+        }).done(function (data) {
 
             // insert worked
             if (data.success) {
-                
+
                 //remove any form data
                 $('#createEvent').trigger("reset");
 
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    $('#editEvent').submit(function(event) {
+    $('#editEvent').submit(function (event) {
 
         // stop the form refreshing the page
         event.preventDefault();
@@ -163,23 +163,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // process the form
         $.ajax({
-            type        : "POST",
-            url         : '../api/calendar/update.php',
-            data        : {
-                id:id, 
-                title:title, 
-                start:start,
-                end:end,
-                color:color,
-                text_color:textColor
+            type: "POST",
+            url: '../api/calendar/update.php',
+            data: {
+                id: id,
+                title: title,
+                start: start,
+                end: end,
+                color: color,
+                text_color: textColor
             },
-            dataType    : 'json',
-            encode      : true
-        }).done(function(data) {
+            dataType: 'json',
+            encode: true
+        }).done(function (data) {
 
             // insert worked
             if (data.success) {
-                
+
                 //remove any form data
                 $('#editEvent').trigger("reset");
 

@@ -69,14 +69,14 @@ $("#TablePermissionList").on('click', '.select', function () {
 
                 for (let m = 0; m < main_menu_array.length; m++) {
                     let m_main = main_menu_array[m];
-                    if (m_main!=="") {
-                    document.getElementById(m_main).checked = true;
+                    if (m_main !== "") {
+                        document.getElementById(m_main).checked = true;
                     }
                 }
 
                 for (let s = 0; s < sub_menu_array.length; s++) {
                     let m_sub = sub_menu_array[s];
-                    if (m_sub!=="") {
+                    if (m_sub !== "") {
                         document.getElementById(m_sub).checked = true;
                     }
                 }

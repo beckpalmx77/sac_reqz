@@ -6,7 +6,7 @@
 
 <?php
 
-$val = 80 ;
+$val = 80;
 $data = "style='width: " . $val . "%'";
 
 ?>
@@ -14,7 +14,8 @@ $data = "style='width: " . $val . "%'";
     <div class="col-md-6">
         <div class="card">
             <div class="progress">
-                <div class="progress-bar" role="progressbar" <?php echo $data ?> aria-valuenow="<?php echo $val ?>" aria-valuemin="0"
+                <div class="progress-bar" role="progressbar" <?php echo $data ?> aria-valuenow="<?php echo $val ?>"
+                     aria-valuemin="0"
                      aria-valuemax="100"><?php echo $val . "%" ?>
                 </div>
             </div>

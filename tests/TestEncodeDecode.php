@@ -21,15 +21,15 @@ $password = "admin";
 $password1 = "admin1";
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 echo "<br>";
-echo "hashed_password = " .$hashed_password;
+echo "hashed_password = " . $hashed_password;
 
 echo "<br>";
-if(password_verify($password1, $hashed_password)) {
+if (password_verify($password1, $hashed_password)) {
     echo "<br>";
-    echo $password . " | hashed_password = " .$hashed_password;
+    echo $password . " | hashed_password = " . $hashed_password;
 } else {
     echo "<br>";
-    echo "Not Equals hashed_password = " .$hashed_password;
+    echo "Not Equals hashed_password = " . $hashed_password;
 }
 
 

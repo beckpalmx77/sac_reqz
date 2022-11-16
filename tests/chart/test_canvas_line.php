@@ -86,7 +86,7 @@ $dataPoints = array(
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         //document.getElementById("txt").innerHTML =
-                            //xhr.responseText;
+                        //xhr.responseText;
                         alert(xhr.responseText);
                     } else {
                         console.log('Error Code: ' + xhr.status);

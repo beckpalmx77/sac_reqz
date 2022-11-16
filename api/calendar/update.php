@@ -4,15 +4,15 @@ include("../config.php");
 if (isset($_POST['id'])) {
 
     //collect data
-    $error      = null;
-    $id         = $_POST['id'];
-    $start      = $_POST['start'];
-    $end        = $_POST['end'];
+    $error = null;
+    $id = $_POST['id'];
+    $start = $_POST['start'];
+    $end = $_POST['end'];
 
     //optional fields
-    $title      = isset($_POST['title']) ? $_POST['title']: '';
-    $color      = isset($_POST['color']) ? $_POST['color']: '';
-    $text_color = isset($_POST['text_color']) ? $_POST['text_color']: '';
+    $title = isset($_POST['title']) ? $_POST['title'] : '';
+    $color = isset($_POST['color']) ? $_POST['color'] : '';
+    $text_color = isset($_POST['text_color']) ? $_POST['text_color'] : '';
 
     //validation
     if ($start == '') {
@@ -24,12 +24,12 @@ if (isset($_POST['id'])) {
     }
 
     //if there are no errors, carry on
-    if (! isset($error)) {
+    if (!isset($error)) {
 
         //reformat date
         $start = date('Y-m-d H:i:s', strtotime($start));
         $end = date('Y-m-d H:i:s', strtotime($end));
-        
+
         $data['success'] = true;
         $data['message'] = 'Success!';
 
@@ -40,15 +40,15 @@ if (isset($_POST['id'])) {
         ];
 
         //check for additional fields, and add to $update array if they exist
-        if ($title !='') {
+        if ($title != '') {
             $update['title'] = $title;
         }
 
-        if ($color !='') {
+        if ($color != '') {
             $update['color'] = $color;
         }
 
-        if ($text_color !='') {
+        if ($text_color != '') {
             $update['text_color'] = $text_color;
         }
 
@@ -57,7 +57,7 @@ if (isset($_POST['id'])) {
 
         //update database
         $db->update('ims_event', $update, $where);
-      
+
     } else {
 
         $data['success'] = false;

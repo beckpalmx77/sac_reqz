@@ -15,8 +15,8 @@ $pdf->SetKeywords('Mindphp, TCPDF, PDF, example, guide');
 // 12 = ขนาดตัวอักษร
 $pdf->setHeaderFont(array('Prompt', 'B', 12));
 
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Mindphp Example 04', 'การใช้คำสั่ง Cell(), Multicell(), WriteHTML(), writeHTMLCell()', array (0, 64, 255), array (0, 64, 128));
-$pdf->setFooterData(array (0, 64, 0), array (0, 64, 128));
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Mindphp Example 04', 'การใช้คำสั่ง Cell(), Multicell(), WriteHTML(), writeHTMLCell()', array(0, 64, 255), array(0, 64, 128));
+$pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
 
 $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);

@@ -105,7 +105,8 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <div class="modal-body">
                                     <div class="form-group"
                                     <label for="user_id" class="control-label">User ID</label>
-                                    <input type="text" class="form-control" id="user_id" name="user_id" placeholder="User ID"
+                                    <input type="text" class="form-control" id="user_id" name="user_id"
+                                           placeholder="User ID"
                                            required>
                                 </div>
 

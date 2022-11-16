@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 include("../config/connect_db.php");
 
-$doc_date = str_replace("-","/",$_POST["doc_date"]);
+$doc_date = str_replace("-", "/", $_POST["doc_date"]);
 $branch = $_POST["branch"];
 
 $sql_get = "

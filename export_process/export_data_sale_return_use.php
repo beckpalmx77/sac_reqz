@@ -68,7 +68,7 @@ for ($loop = 1; $loop <= 2; $loop++) {
             $TRD_G_VAT = "-" . $row['TRD_G_VAT'];
             //$my_file = fopen("sac_str_sale.txt", "w") or die("Unable to open file!");
             //fwrite($my_file, "Loop " . $loop . " = " . $TRD_QTY . " | " . $TRD_Q_FREE . " | " . $TRD_U_PRC . " | "
-                //. $TRD_G_KEYIN . " | " . $TRD_G_SELL . " | " . $TRD_G_VAT);
+            //. $TRD_G_KEYIN . " | " . $TRD_G_SELL . " | " . $TRD_G_VAT);
             //fclose($my_file);
         } else {
             $TRD_QTY = $row['TRD_QTY'];
@@ -79,7 +79,7 @@ for ($loop = 1; $loop <= 2; $loop++) {
             $TRD_G_VAT = $row['TRD_G_VAT'];
             $my_file = fopen("sac_str_return.txt", "w") or die("Unable to open file!");
             //fwrite($my_file, "Loop " . $loop . " = " . $TRD_QTY . " | " . $TRD_Q_FREE . " | " . $TRD_U_PRC . " | "
-                //. $TRD_G_KEYIN . " | " . $TRD_G_SELL . " | " . $TRD_G_VAT);
+            //. $TRD_G_KEYIN . " | " . $TRD_G_SELL . " | " . $TRD_G_VAT);
             //fclose($my_file);
         }
 

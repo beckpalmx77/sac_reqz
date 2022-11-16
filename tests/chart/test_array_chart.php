@@ -39,7 +39,7 @@ AND DI_YEAR = '" . $year . "'";
 
     } else {
 
-            $data[] = "0,";
+        $data[] = "0,";
 
     }
 

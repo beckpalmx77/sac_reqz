@@ -3,15 +3,15 @@ include("../../config/connect_db.php");
 
 $year_start = date("Y");
 $year = '';
-$label1 = '' ;
-$label2 = '' ;
-$label3 = '' ;
-$label4 = '' ;
-$data1 = '' ;
-$data2 = '' ;
-$data3 = '' ;
-$data4 = '' ;
-$i = 1 ;
+$label1 = '';
+$label2 = '';
+$label3 = '';
+$label4 = '';
+$data1 = '';
+$data2 = '';
+$data3 = '';
+$data4 = '';
+$i = 1;
 
 for ($x = 0; $x <= 3; $x++) {
 
@@ -45,20 +45,20 @@ for ($x = 0; $x <= 3; $x++) {
 
     switch ($x) {
         case 0:
-            $label1=$year;
-            $data1=$str_return;
+            $label1 = $year;
+            $data1 = $str_return;
             break;
         case 1:
-            $label2=$year;
-            $data2=$str_return;
+            $label2 = $year;
+            $data2 = $str_return;
             break;
         case 2:
-            $label3=$year;
-            $data3=$str_return;
+            $label3 = $year;
+            $data3 = $str_return;
             break;
         case 3:
-            $label4=$year;
-            $data4=$str_return;
+            $label4 = $year;
+            $data4 = $str_return;
             break;
     }
 

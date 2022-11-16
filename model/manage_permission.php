@@ -11,15 +11,15 @@ if ($_POST["action"] === 'INIT') {
     $table_main_name = $_POST["table_main_name"];
     $table_sub_name = $_POST["table_sub_name"];
 
-    $sql_get_main = "SELECT * FROM " . $table_main_name . " ORDER BY sort " ;
+    $sql_get_main = "SELECT * FROM " . $table_main_name . " ORDER BY sort ";
     $statement = $conn->query($sql_get_main);
     $main_results = $statement->fetchAll(PDO::FETCH_ASSOC);
     $checkbox = "<ul>";
     foreach ($main_results as $main_result) {
 
-        $checkbox .= "<input type='checkbox' id='" . $main_result['main_menu_id'] . "' name='menu_main' value='" . $main_result['main_menu_id'] . "'>" . " " . "<b>". $main_result['main_menu_id'] . " " . $main_result['label'].  "</b><br/>" ;
+        $checkbox .= "<input type='checkbox' id='" . $main_result['main_menu_id'] . "' name='menu_main' value='" . $main_result['main_menu_id'] . "'>" . " " . "<b>" . $main_result['main_menu_id'] . " " . $main_result['label'] . "</b><br/>";
 
-        $sql_get_sub = "SELECT * FROM " . $table_sub_name . " WHERE main_menu_id = '" . $main_result['main_menu_id'] . "' ORDER BY main_menu_id,sub_menu_id " ;
+        $sql_get_sub = "SELECT * FROM " . $table_sub_name . " WHERE main_menu_id = '" . $main_result['main_menu_id'] . "' ORDER BY main_menu_id,sub_menu_id ";
         $statement = $conn->query($sql_get_sub);
         $sub_results = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($sub_results as $sub_result) {
@@ -77,10 +77,10 @@ if ($_POST["action"] === 'SAVE') {
 
     //$myfile = fopen("permission-param.txt", "w") or die("Unable to open file!");
     //fwrite($myfile, $permission_id  . " | " . $permission_detail . " | " . $dashboard_page
-        //. " | " . $main_list_value . " | " . $sub_list_value );
+    //. " | " . $main_list_value . " | " . $sub_list_value );
     //fclose($myfile);
 
-    if ($permission_id !=="" && $permission_detail !=="" && $main_list_value !=="" && $sub_list_value !=="") {
+    if ($permission_id !== "" && $permission_detail !== "" && $main_list_value !== "" && $sub_list_value !== "") {
         $sql_find = "SELECT * FROM ims_permission WHERE permission_id = '" . $permission_id . "'";
         $nRows = $conn->query($sql_find)->fetchColumn();
         if ($nRows <= 0) {
@@ -96,9 +96,9 @@ if ($_POST["action"] === 'SAVE') {
             $lastInsertId = $conn->lastInsertId();
 
             if ($lastInsertId) {
-                echo json_encode(array("statusCode"=>200));
+                echo json_encode(array("statusCode" => 200));
             } else {
-                echo json_encode(array("statusCode"=>201));
+                echo json_encode(array("statusCode" => 201));
             }
 
         } else {
@@ -112,11 +112,10 @@ if ($_POST["action"] === 'SAVE') {
             $query->bindParam(':sub_list_value', $sub_list_value, PDO::PARAM_STR);
             $query->bindParam(':permission_id', $permission_id, PDO::PARAM_STR);
             $query->execute();
-            echo json_encode(array("statusCode"=>200));
+            echo json_encode(array("statusCode" => 200));
         }
-    }
-    else {
-        echo json_encode(array("statusCode"=>201));
+    } else {
+        echo json_encode(array("statusCode" => 201));
     }
 
 
@@ -188,7 +187,7 @@ if ($_POST["action"] === 'GET_PERMISSION') {
                 "id" => $row['id'],
                 "permission_id" => $row['permission_id'],
                 "permission_detail" => $row['permission_detail'],
-                "select" => "<button type='button' name='select' id='" . $row['permission_id'] . "@" . $row['permission_detail'] ."' class='btn btn-outline-success btn-xs select' data-toggle='tooltip' title='select'>select <i class='fa fa-check' aria-hidden='true'></i>
+                "select" => "<button type='button' name='select' id='" . $row['permission_id'] . "@" . $row['permission_detail'] . "' class='btn btn-outline-success btn-xs select' data-toggle='tooltip' title='select'>select <i class='fa fa-check' aria-hidden='true'></i>
 </button>",
             );
         }

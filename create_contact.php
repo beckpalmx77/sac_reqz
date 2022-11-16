@@ -39,188 +39,189 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <div class="card-body">
                                     <section class="container-fluid">
 
-                                                    <form method="post" id="recordForm">
-                                                        <div class="modal-body">
-                                                            <div class="modal-body">
+                                        <form method="post" id="recordForm">
+                                            <div class="modal-body">
+                                                <div class="modal-body">
 
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-4">
-                                                                        <label for="customer_id" class="control-label">รหัสลูกค้า</label>
-                                                                        <input type="customer_id" class="form-control"
-                                                                               id="customer_id" name="customer_id"
-                                                                               readonly="true"
-                                                                               placeholder="รหัสลูกค้า สร้างอัตโนมัติ">
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <label for="f_name"
-                                                                               class="control-label">ชื่อ</label>
-                                                                        <input type="text" class="form-control"
-                                                                               id="f_name"
-                                                                               name="f_name"
-                                                                               required="required"
-                                                                               placeholder="ชื่อ">
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <label for="l_name"
-                                                                               class="control-label">นามสกุล</label>
-                                                                        <input type="text" class="form-control"
-                                                                               id="l_name"
-                                                                               name="l_name"
-                                                                               required="required"
-                                                                               placeholder="นามสกุล">
-                                                                    </div>
-                                                                </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4">
+                                                            <label for="customer_id"
+                                                                   class="control-label">รหัสลูกค้า</label>
+                                                            <input type="customer_id" class="form-control"
+                                                                   id="customer_id" name="customer_id"
+                                                                   readonly="true"
+                                                                   placeholder="รหัสลูกค้า สร้างอัตโนมัติ">
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label for="f_name"
+                                                                   class="control-label">ชื่อ</label>
+                                                            <input type="text" class="form-control"
+                                                                   id="f_name"
+                                                                   name="f_name"
+                                                                   required="required"
+                                                                   placeholder="ชื่อ">
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label for="l_name"
+                                                                   class="control-label">นามสกุล</label>
+                                                            <input type="text" class="form-control"
+                                                                   id="l_name"
+                                                                   name="l_name"
+                                                                   required="required"
+                                                                   placeholder="นามสกุล">
+                                                        </div>
+                                                    </div>
 
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-6">
-                                                                        <label for="phone" class="control-label">โทรศัพท์</label>
-                                                                        <input type="phone" class="form-control"
-                                                                               id="phone" name="phone"
-                                                                               placeholder="โทรศัพท์">
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <label for="email"
-                                                                               class="control-label">อีเมล์</label>
-                                                                        <input type="email" class="form-control"
-                                                                               id="email"
-                                                                               name="email"
-                                                                               required="required"
-                                                                               placeholder="อีเมล์">
-                                                                    </div>
-                                                                </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6">
+                                                            <label for="phone" class="control-label">โทรศัพท์</label>
+                                                            <input type="phone" class="form-control"
+                                                                   id="phone" name="phone"
+                                                                   placeholder="โทรศัพท์">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label for="email"
+                                                                   class="control-label">อีเมล์</label>
+                                                            <input type="email" class="form-control"
+                                                                   id="email"
+                                                                   name="email"
+                                                                   required="required"
+                                                                   placeholder="อีเมล์">
+                                                        </div>
+                                                    </div>
 
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-12">
-                                                                        <label for="address"
-                                                                               class="control-label">ที่อยู่</label>
-                                                                        <input type="address" class="form-control"
-                                                                               id="address" name="address"
-                                                                               required="required"
-                                                                               placeholder="ที่อยู่">
-                                                                    </div>
-                                                                </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <label for="address"
+                                                                   class="control-label">ที่อยู่</label>
+                                                            <input type="address" class="form-control"
+                                                                   id="address" name="address"
+                                                                   required="required"
+                                                                   placeholder="ที่อยู่">
+                                                        </div>
+                                                    </div>
 
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-4">
-                                                                        <label for="province_name"
-                                                                               class="control-label">จังหวัด</label>
-                                                                        <input type="hidden" id="province"
-                                                                               name="province">
-                                                                        <input type="text" class="form-control"
-                                                                               id="province_name"
-                                                                               name="province_name"
-                                                                               required="required"
-                                                                               readonly="true"
-                                                                               placeholder="จังหวัด">
-                                                                    </div>
-                                                                    <div class="col-sm-2">
-                                                                        <label for="province"
-                                                                               class="control-label">เลือก</label>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4">
+                                                            <label for="province_name"
+                                                                   class="control-label">จังหวัด</label>
+                                                            <input type="hidden" id="province"
+                                                                   name="province">
+                                                            <input type="text" class="form-control"
+                                                                   id="province_name"
+                                                                   name="province_name"
+                                                                   required="required"
+                                                                   readonly="true"
+                                                                   placeholder="จังหวัด">
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <label for="province"
+                                                                   class="control-label">เลือก</label>
 
-                                                                        <a data-toggle="modal"
-                                                                           href="#SearchProvinceModal"
-                                                                           class="btn btn-primary">
-                                                                            Click <i class="fa fa-search"
-                                                                                     aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <label for="amphure_name"
-                                                                               class="control-label">เขต/อำเภอ</label>
-                                                                        <input type="hidden" id="amphure"
-                                                                               name="amphure">
-                                                                        <input type="text" class="form-control"
-                                                                               id="amphure_name"
-                                                                               name="amphure_name"
-                                                                               required="required"
-                                                                               readonly="true"
-                                                                               placeholder="เขต/อำเภอ">
-
-                                                                    </div>
-                                                                    <div class="col-sm-2">
-                                                                        <label for="amphure"
-                                                                               class="control-label">เลือก</label>
-
-                                                                        <!--a data-toggle="modal"
-                                                                           href="#SearchAmphureModal"
-                                                                           class="btn btn-primary">
-                                                                            Click <i class="fa fa-search"
-                                                                                     aria-hidden="true"></i>
-                                                                        </a-->
-                                                                        <button type="button"
-                                                                                class="btn btn-primary"
-                                                                                data-toggle="modal"
-                                                                                data-target="#SearchAmphureModal"
-                                                                                id="AmphureBtn">
-                                                                            Click <i class="fa fa-search"
-                                                                                     aria-hidden="true"></i>
-                                                                        </button>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-4">
-                                                                        <label for="tumbol" class="control-label">แขวง/ตำบล</label>
-                                                                        <input type="hidden" id="tumbol" name="tumbol">
-                                                                        <input type="text" class="form-control"
-                                                                               id="tumbol_name"
-                                                                               name="tumbol_name"
-                                                                               required="required"
-                                                                               readonly="true"
-                                                                               placeholder="แขวง/ตำบล">
-                                                                    </div>
-                                                                    <div class="col-sm-2">
-                                                                        <label for="tumbol"
-                                                                               class="control-label">เลือก</label>
-
-                                                                        <a data-toggle="modal"
-                                                                           href="#SearchTumbolModal"
-                                                                           class="btn btn-primary">
-                                                                            Click <i class="fa fa-search"
-                                                                                     aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <label for="zipcode"
-                                                                               class="control-label">รหัสไปรษณีย์</label>
-                                                                        <input id="zipcode" type="text" name="zipcode"
-                                                                               class="form-control"
-                                                                               placeholder="">
-                                                                        <div class="help-block with-errors"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label for="status"
-                                                                       class="control-label">Status</label>
-                                                                <select id="status" name="status"
-                                                                        class="form-control"
-                                                                        data-live-search="true"
-                                                                        title="Please select">
-                                                                    <option>Active</option>
-                                                                    <option>Inactive</option>
-                                                                </select>
-                                                            </div>
+                                                            <a data-toggle="modal"
+                                                               href="#SearchProvinceModal"
+                                                               class="btn btn-primary">
+                                                                Click <i class="fa fa-search"
+                                                                         aria-hidden="true"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label for="amphure_name"
+                                                                   class="control-label">เขต/อำเภอ</label>
+                                                            <input type="hidden" id="amphure"
+                                                                   name="amphure">
+                                                            <input type="text" class="form-control"
+                                                                   id="amphure_name"
+                                                                   name="amphure_name"
+                                                                   required="required"
+                                                                   readonly="true"
+                                                                   placeholder="เขต/อำเภอ">
 
                                                         </div>
+                                                        <div class="col-sm-2">
+                                                            <label for="amphure"
+                                                                   class="control-label">เลือก</label>
+
+                                                            <!--a data-toggle="modal"
+                                                               href="#SearchAmphureModal"
+                                                               class="btn btn-primary">
+                                                                Click <i class="fa fa-search"
+                                                                         aria-hidden="true"></i>
+                                                            </a-->
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
+                                                                    data-toggle="modal"
+                                                                    data-target="#SearchAmphureModal"
+                                                                    id="AmphureBtn">
+                                                                Click <i class="fa fa-search"
+                                                                         aria-hidden="true"></i>
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4">
+                                                            <label for="tumbol" class="control-label">แขวง/ตำบล</label>
+                                                            <input type="hidden" id="tumbol" name="tumbol">
+                                                            <input type="text" class="form-control"
+                                                                   id="tumbol_name"
+                                                                   name="tumbol_name"
+                                                                   required="required"
+                                                                   readonly="true"
+                                                                   placeholder="แขวง/ตำบล">
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <label for="tumbol"
+                                                                   class="control-label">เลือก</label>
+
+                                                            <a data-toggle="modal"
+                                                               href="#SearchTumbolModal"
+                                                               class="btn btn-primary">
+                                                                Click <i class="fa fa-search"
+                                                                         aria-hidden="true"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label for="zipcode"
+                                                                   class="control-label">รหัสไปรษณีย์</label>
+                                                            <input id="zipcode" type="text" name="zipcode"
+                                                                   class="form-control"
+                                                                   placeholder="">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="status"
+                                                           class="control-label">Status</label>
+                                                    <select id="status" name="status"
+                                                            class="form-control"
+                                                            data-live-search="true"
+                                                            title="Please select">
+                                                        <option>Active</option>
+                                                        <option>Inactive</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
 
 
-                                                        <div class="modal-footer">
-                                                            <input type="hidden" name="id" id="id"/>
-                                                            <input type="hidden" name="action" id="action" value=""/>
-                                                            <span class="icon-input-btn">
+                                            <div class="modal-footer">
+                                                <input type="hidden" name="id" id="id"/>
+                                                <input type="hidden" name="action" id="action" value=""/>
+                                                <span class="icon-input-btn">
                                                                 <i class="fa fa-check"></i>
                                                             <input type="submit" name="save" id="save"
                                                                    class="btn btn-primary" value="Save"/>
                                                             </span>
-                                                            <button type="button" class="btn btn-danger"
-                                                                    data-dismiss="modal">Close <i
-                                                                    class="fa fa-window-close"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
+                                                <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close <i
+                                                            class="fa fa-window-close"></i>
+                                                </button>
+                                            </div>
+                                        </form>
 
 
                                 </div>
@@ -231,8 +232,6 @@ if (strlen($_SESSION['alogin']) == "") {
                 </div>
             </div>
         </div>
-
-
 
 
     </div>
@@ -514,7 +513,6 @@ if (strlen($_SESSION['alogin']) == "") {
             $("#province_name_para").val(province_name);
         });
     </script>
-
 
 
     </body>

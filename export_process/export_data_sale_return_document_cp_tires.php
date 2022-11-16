@@ -32,19 +32,19 @@ $query_daily_cond_ext_tires = " AND (ICCAT_CODE IN ('2SAC01','2SAC02','2SAC03','
 $doc_date_start = substr($_POST['doc_date_start'], 6, 4) . "/" . substr($_POST['doc_date_start'], 3, 2) . "/" . substr($_POST['doc_date_start'], 0, 2);
 $doc_date_to = substr($_POST['doc_date_to'], 6, 4) . "/" . substr($_POST['doc_date_to'], 3, 2) . "/" . substr($_POST['doc_date_to'], 0, 2);
 
-$month_arr=array(
-    "01"=>"มกราคม",
-    "02"=>"กุมภาพันธ์",
-    "03"=>"มีนาคม",
-    "04"=>"เมษายน",
-    "05"=>"พฤษภาคม",
-    "06"=>"มิถุนายน",
-    "07"=>"กรกฎาคม",
-    "08"=>"สิงหาคม",
-    "09"=>"กันยายน",
-    "10"=>"ตุลาคม",
-    "11"=>"พฤศจิกายน",
-    "12"=>"ธันวาคม"
+$month_arr = array(
+    "01" => "มกราคม",
+    "02" => "กุมภาพันธ์",
+    "03" => "มีนาคม",
+    "04" => "เมษายน",
+    "05" => "พฤษภาคม",
+    "06" => "มิถุนายน",
+    "07" => "กรกฎาคม",
+    "08" => "สิงหาคม",
+    "09" => "กันยายน",
+    "10" => "ตุลาคม",
+    "11" => "พฤศจิกายน",
+    "12" => "ธันวาคม"
 );
 
 $month = substr($_POST['doc_date_start'], 3, 2);
@@ -68,7 +68,7 @@ $query->execute();
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
     $data .= " " . $row['DI_DATE'] . ",";
-    $data .= " " . $month_name. ",";
+    $data .= " " . $month_name . ",";
     $data .= " " . $year . ",";
 
     $data .= str_replace(",", "^", $row['AR_CODE']) . ",";

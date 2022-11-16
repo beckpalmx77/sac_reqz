@@ -15,13 +15,13 @@
 <script>
     // Data define for bar chart
     let myData = {
-        labels: ["Javascript", "Java", "Python", "PHP", "C++", "TypeScript", "Linux Shell","C","Ruby on Rails"],
+        labels: ["Javascript", "Java", "Python", "PHP", "C++", "TypeScript", "Linux Shell", "C", "Ruby on Rails"],
         datasets: [{
             label: "Hey, baby!",
             fill: false,
             backgroundColor: ['#ff0000', '#ff4000', '#ff8000', '#ffbf00', '#ffbf00', '#ffff00', '#bfff00', '#80ff00', '#40ff00', '#00ff00'],
             borderColor: 'black',
-            data: [85, 60,70, 50, 18, 20, 45, 30, 20],
+            data: [85, 60, 70, 50, 18, 20, 45, 30, 20],
         }]
     };
     // Options to display value on top of bars

@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+          content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Loader Demo</title>
     <style>
         #loader {
@@ -39,9 +39,9 @@
 <h1>GeeksforGeeks</h1>
 <h2>A computer science portal for geeks</h2>
 <img src="https://i.imgur.com/KsQJA8I.png"
-     alt="GeeksforGeeks logo" />
+     alt="GeeksforGeeks logo"/>
 <script>
-    document.onreadystatechange = function() {
+    document.onreadystatechange = function () {
         if (document.readyState !== "complete") {
             document.querySelector(
                 "body").style.visibility = "hidden";

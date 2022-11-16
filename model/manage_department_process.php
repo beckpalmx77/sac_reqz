@@ -132,12 +132,12 @@ if ($_POST["action"] === 'GET_DEPARTMENT') {
     $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
     $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
     $searchValue = $_POST['search']['value']; // Search value
-/*
-    $txt = "DDD " . $columnSortOrder;
-    $my_file = fopen("device_a.txt", "w") or die("Unable to open file!");
-    fwrite($my_file, $txt);
-    fclose($my_file);
-*/
+    /*
+        $txt = "DDD " . $columnSortOrder;
+        $my_file = fopen("device_a.txt", "w") or die("Unable to open file!");
+        fwrite($my_file, $txt);
+        fclose($my_file);
+    */
 
 
     $searchArray = array();
@@ -169,12 +169,12 @@ if ($_POST["action"] === 'GET_DEPARTMENT') {
     $stmt = $conn->prepare("SELECT * FROM mdepartment WHERE 1 " . $searchQuery
         . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset");
 
-/*
-    $txt = $searchQuery . " | " . $columnName . " | " . $columnSortOrder;
-    $my_file = fopen("device_b.txt", "w") or die("Unable to open file!");
-    fwrite($my_file, $txt);
-    fclose($my_file);
-*/
+    /*
+        $txt = $searchQuery . " | " . $columnName . " | " . $columnSortOrder;
+        $my_file = fopen("device_b.txt", "w") or die("Unable to open file!");
+        fwrite($my_file, $txt);
+        fclose($my_file);
+    */
 
 
 // Bind values

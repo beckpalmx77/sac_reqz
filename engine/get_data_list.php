@@ -30,8 +30,8 @@ $statement = $conn->query($sql_get);
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($results as $result) {
-  $return_arr[] = array("BRN_NAME" => $result['BRN_NAME'],
-      "TRD_G_KEYIN" => $result['TRD_G_KEYIN']);
+    $return_arr[] = array("BRN_NAME" => $result['BRN_NAME'],
+        "TRD_G_KEYIN" => $result['TRD_G_KEYIN']);
 }
 
 //$myfile = fopen("qry_file1.txt", "w") or die("Unable to open file!");
